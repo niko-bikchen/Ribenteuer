@@ -1,6 +1,7 @@
 //developed by Vladyslav Haponenko
-package model;
+package model.User;
 
+import model.User.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 //the class controls retrieving data about users
