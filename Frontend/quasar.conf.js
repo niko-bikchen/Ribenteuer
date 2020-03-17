@@ -81,6 +81,25 @@ module.exports = function quasarConf() {
 
       // https://quasar.dev/quasar-cli/cli-documentation/handling-webpack
       extendWebpack(cfg) {
+        if (!process.env.WEBPACK_DEV_SERVER) {
+          const WebpackOnBuildPlugin = require('on-build-webpack');
+
+          cfg.plugins.push(
+            new WebpackOnBuildPlugin(() => {
+              const { ncp } = require('ncp');
+
+              ncp('./dist/spa/', '../Backend/src/main/resources/static/', err => {
+                if (err) {
+                  // eslint-disable-next-line no-console
+                  console.error(err);
+                }
+                // eslint-disable-next-line no-console
+                console.log('=!= DONE COPYING FROM DIST =!=');
+              });
+            })
+          );
+        }
+
         cfg.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
