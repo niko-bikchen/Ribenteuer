@@ -21,4 +21,6 @@ public interface ItemService {
 
     Item getItemById(String id);
 
+    void deleteAllByOwnerId(String id);
+
 }

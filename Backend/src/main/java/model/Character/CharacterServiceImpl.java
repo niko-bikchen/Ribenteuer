@@ -28,6 +28,8 @@ public class CharacterServiceImpl implements CharacterService {
     //a String type which corresponds to exact class of character
     //
     //adds the character to repository
+    //
+    //parameter type expected to be rogue, mage or warrior
     @Override
     public void makeCharacter(String type,String ownerId) {
         CharacterFactory cf= new CharacterFactory();
@@ -39,8 +41,22 @@ public class CharacterServiceImpl implements CharacterService {
         return characterRepository.findById(id);
     }
 
+
+    //the method deletes a character
+    //
+    //after the method is called deleteAllByOwnerId method from ItemServiceImpl must be called
+    //in order to delete respective items of a character
     @Override
     public void deleteCharacter(String id) {
         characterRepository.deleteById(id);
+    }
+
+
+    //the method deletes all characters respective to the user
+    //
+    //for every deleted character the method deleteByOwnerId from ItemServiceImpl must be called
+    @Override
+    public void deleteAllByOwnerId(String id) {
+        characterRepository.deleteAllByOwnerId(id);
     }
 }

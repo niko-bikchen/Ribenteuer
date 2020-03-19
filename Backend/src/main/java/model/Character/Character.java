@@ -12,8 +12,16 @@ import org.springframework.data.annotation.Id;
 public abstract class Character {
 
     @Id
-    private String id;
+    protected String id;
 
-    private String ownerId;
+    protected String ownerId;
+
+    protected int agility;
+
+    protected int intelligence;
+
+    protected int strength;
+
+
 
 }

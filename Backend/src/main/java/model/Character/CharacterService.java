@@ -17,4 +17,6 @@ public interface CharacterService {
     Optional<Character> findCharacterById(String id);
 
     void deleteCharacter(String id);
+
+    void deleteAllByOwnerId(String id);
 }

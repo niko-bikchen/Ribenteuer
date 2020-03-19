@@ -1,3 +1,4 @@
+//developed by Vladyslav Haponenko
 package model.Character;
 
 public abstract class BaseCharacterFactory {
