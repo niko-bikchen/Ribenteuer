@@ -2,11 +2,10 @@ const routes = [
   {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/Index.vue') }]
-  },
-  {
-    path: '/konva',
-    component: () => import('pages/Canvas.vue')
+    children: [
+      { path: '', component: () => import('pages/UserEntry.vue') },
+      { path: 'characters', component: () => import('pages/UserCharacters.vue') }
+    ]
   }
 ];
 
