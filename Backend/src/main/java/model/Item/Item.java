@@ -9,9 +9,10 @@ import org.springframework.data.annotation.Id;
 //the class describes items and relates to the owner
 @Getter
 @Setter
-public class Item {
+public abstract class Item {
 
     @Id
-    private String id;
-    private String ownerId;
+    protected String id;
+    protected String ownerId;
+    protected boolean equipped;
 }

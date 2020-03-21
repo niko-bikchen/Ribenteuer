@@ -14,4 +14,9 @@ public class User {
     private String mail;
     private String pass;
 
+    public User(String mail,String pass){
+        this.mail=mail;
+        this.pass=pass;
+    }
+
 }

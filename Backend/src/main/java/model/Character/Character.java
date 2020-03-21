@@ -3,14 +3,25 @@ package model.Character;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.Id;
 
+@ToString
 @Getter
 @Setter
-public class Character {
+public abstract class Character {
 
     @Id
-    private String id;
-    private String ownerId;
+    protected String id;
+
+    protected String ownerId;
+
+    protected int agility;
+
+    protected int intelligence;
+
+    protected int strength;
+
+
 
 }

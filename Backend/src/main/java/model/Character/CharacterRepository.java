@@ -11,4 +11,6 @@ public interface CharacterRepository extends MongoRepository<Character,String> {
 
     public List<Character> findCharacterByOwnerId(String id);
 
+    public void deleteAllByOwnerId(String id);
+
 }

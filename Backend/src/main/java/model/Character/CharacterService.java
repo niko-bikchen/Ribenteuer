@@ -2,6 +2,7 @@
 package model.Character;
 
 import java.util.List;
+import java.util.Optional;
 
 //all classes which implement the interface will be responsible for
 //interaction with CharacterRepository
@@ -10,10 +11,12 @@ public interface CharacterService {
 
     List<Character> findAllUsersChars(String id);
 
-    //TODO
-    void makeCharacter();
+    //make the Character based on value for it's fields and type
+    void makeCharacter(String type,String ownerId);
 
-    Character findCharacterById(String id);
+    Optional<Character> findCharacterById(String id);
 
     void deleteCharacter(String id);
+
+    void deleteAllByOwnerId(String id);
 }

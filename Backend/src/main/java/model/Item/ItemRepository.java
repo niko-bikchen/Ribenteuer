@@ -13,4 +13,6 @@ public interface ItemRepository extends MongoRepository<Item, String> {
 
     //retrieves all items which belong to the user with the id
     public List<Item> findByOwnerId(String id);
+
+    public void deleteAllByOwnerId(String id);
 }
