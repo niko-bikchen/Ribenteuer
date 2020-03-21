@@ -53,7 +53,16 @@ module.exports = function quasarConf() {
         'QList',
         'QItem',
         'QItemSection',
-        'QItemLabel'
+        'QItemLabel',
+        'QFooter',
+        'QForm',
+        'QInput',
+        'QCard',
+        'QTab',
+        'QTabs',
+        'QTabPanel',
+        'QTabPanels',
+        'QSeparator'
       ],
 
       directives: ['Ripple'],

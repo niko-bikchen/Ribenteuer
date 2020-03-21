@@ -1,87 +1,55 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="hHh LpR fFf">
+    <q-header class="bg-transparent bb-w">
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-
-        <q-toolbar-title>Quasar App</q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-toolbar-title>
+          <div class="text-h4 font-bitmgothic q-mb-sm q-mt-md">
+            Ribenteuer
+          </div>
+        </q-toolbar-title>
       </q-toolbar>
     </q-header>
-
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered content-class="bg-grey-1">
-      <q-list>
-        <q-item-label header class="text-grey-8">Essential Links</q-item-label>
-        <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
-      </q-list>
-    </q-drawer>
-
     <q-page-container>
-      <router-view />
+      <q-page>
+        <router-view></router-view>
+      </q-page>
     </q-page-container>
+    <q-footer class="bg-transparent bt-w">
+      <q-toolbar>
+        <div class="full-width text-center font-tech">
+          Ribenteuer 2020
+        </div>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink';
+import { laUserSolid } from '@quasar/extras/line-awesome';
 
 export default {
-  name: 'MainLayout',
+  created() {
+    this.$q.dark.set(true);
 
-  components: {
-    EssentialLink
-  },
-
-  data() {
-    return {
-      leftDrawerOpen: false,
-      essentialLinks: [
-        {
-          title: 'Docs',
-          caption: 'quasar.dev',
-          icon: 'school',
-          link: 'https://quasar.dev'
-        },
-        {
-          title: 'Github',
-          caption: 'github.com/quasarframework',
-          icon: 'code',
-          link: 'https://github.com/quasarframework'
-        },
-        {
-          title: 'Discord Chat Channel',
-          caption: 'chat.quasar.dev',
-          icon: 'chat',
-          link: 'https://chat.quasar.dev'
-        },
-        {
-          title: 'Forum',
-          caption: 'forum.quasar.dev',
-          icon: 'record_voice_over',
-          link: 'https://forum.quasar.dev'
-        },
-        {
-          title: 'Twitter',
-          caption: '@quasarframework',
-          icon: 'rss_feed',
-          link: 'https://twitter.quasar.dev'
-        },
-        {
-          title: 'Facebook',
-          caption: '@QuasarFramework',
-          icon: 'public',
-          link: 'https://facebook.quasar.dev'
-        }
-      ]
-    };
+    this.userSolid = laUserSolid;
   }
 };
 </script>
+
+<style lang="scss">
+.ba-w {
+  border: 1px solid white !important;
+}
+
+.bt-w {
+  border-top: 1px solid white !important;
+}
+
+.bb-w {
+  border-bottom: 1px solid white !important;
+}
+
+.bl-w {
+  border-left: 1px solid white !important;
+}
+</style>
