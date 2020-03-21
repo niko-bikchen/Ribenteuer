@@ -1,22 +1,26 @@
 //developed by Vladyslav Haponenko
 package model.Character;
 
+import model.Item.Item;
+
 import java.util.List;
 import java.util.Optional;
 
 //all classes which implement the interface will be responsible for
 //interaction with CharacterRepository
 public interface CharacterService {
-    List<Character> findAll();
+    List<GameCharacter> findAll();
 
-    List<Character> findAllUsersChars(String id);
+    List<GameCharacter> findAllUsersChars(String id);
 
     //make the Character based on value for it's fields and type
-    void makeCharacter(String type,String ownerId);
+    void makeCharacter(String type,String ownerId,String name);
 
-    Optional<Character> findCharacterById(String id);
+    Optional<GameCharacter> findCharacterById(String id);
 
     void deleteCharacter(String id);
 
     void deleteAllByOwnerId(String id);
+
+    List<Item> takeAllItemsById(String id);
 }
