@@ -3,5 +3,5 @@ package model.Character;
 
 public abstract class BaseCharacterFactory {
 
-    public abstract Character createCharacter(String type,String ownerId);
+    public abstract GameCharacter createCharacter(String type, String ownerId,String name);
 }

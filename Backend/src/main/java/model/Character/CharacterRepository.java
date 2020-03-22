@@ -2,15 +2,16 @@
 package model.Character;
 
 
-import model.Character.Character;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface CharacterRepository extends MongoRepository<Character,String> {
+public interface CharacterRepository extends MongoRepository<GameCharacter,String> {
 
-    public List<Character> findCharacterByOwnerId(String id);
+    public List<GameCharacter> findGameCharacterByOwnerId(String id);
 
     public void deleteAllByOwnerId(String id);
+
+
 
 }

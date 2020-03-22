@@ -1,6 +1,8 @@
 //developed by Vladyslav Haponenko
 package model.Character;
 
+import model.Item.Item;
+import model.Item.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +16,19 @@ public class CharacterServiceImpl implements CharacterService {
     @Autowired
     private CharacterRepository characterRepository;
 
+    @Autowired
+    private ItemRepository itemRepository;
+
     @Override
-    public List<Character> findAll() {
+    public List<GameCharacter> findAll() {
         return characterRepository.findAll();
     }
 
     @Override
-    public List<Character> findAllUsersChars(String id) {
-        return characterRepository.findCharacterByOwnerId(id);
+    public List<GameCharacter> findAllUsersChars(String id) {
+        return characterRepository.findGameCharacterByOwnerId(id);
     }
+
 
     //should take all the parameters needed for creation of Character and
     //a String type which corresponds to exact class of character
@@ -31,13 +37,14 @@ public class CharacterServiceImpl implements CharacterService {
     //
     //parameter type expected to be rogue, mage or warrior
     @Override
-    public void makeCharacter(String type,String ownerId) {
+    public void makeCharacter(String type,String ownerId,String name) {
         CharacterFactory cf= new CharacterFactory();
-        characterRepository.save(cf.createCharacter(type,ownerId));
+        characterRepository.save(cf.createCharacter(type,ownerId,name));
+        Optional<GameCharacter> c=characterRepository.findById("1");
     }
 
     @Override
-    public Optional<Character> findCharacterById(String id) {
+    public Optional<GameCharacter> findCharacterById(String id) {
         return characterRepository.findById(id);
     }
 
@@ -58,5 +65,10 @@ public class CharacterServiceImpl implements CharacterService {
     @Override
     public void deleteAllByOwnerId(String id) {
         characterRepository.deleteAllByOwnerId(id);
+    }
+
+    @Override
+    public List<Item> takeAllItemsById(String id) {
+        return itemRepository.findByOwnerId(id);
     }
 }
