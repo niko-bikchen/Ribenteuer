@@ -1,4 +1,10 @@
-import { laEnvelopeSolid, laAsteriskSolid, laIdCardSolid } from '@quasar/extras/line-awesome';
+import {
+  laEnvelopeSolid,
+  laAsteriskSolid,
+  laIdCardSolid,
+  laCheckSolid,
+  laExclamationTriangleSolid
+} from '@quasar/extras/line-awesome';
 
 export default function() {
   return {
@@ -14,7 +20,9 @@ export default function() {
     icons: {
       envelopeSolid: laEnvelopeSolid,
       asteriskSolid: laAsteriskSolid,
-      idCardSolid: laIdCardSolid
+      idCardSolid: laIdCardSolid,
+      checkSolid: laCheckSolid,
+      exclamationTriangleSolid: laExclamationTriangleSolid
     },
     user: {
       isAuthenticated: false

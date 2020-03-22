@@ -46,8 +46,11 @@
 </template>
 
 <script>
+import notifyUtils from '../mixins/notify.js';
+
 export default {
   name: 'AppSignUp',
+  mixins: [notifyUtils],
   data() {
     return {
       user: {
@@ -77,13 +80,8 @@ export default {
           this.$q.loadingBar.stop();
 
           if (response.status === 201) {
-            this.$q.notify({
-              color: 'green-5',
-              textColor: 'white',
-              icon: this.icons.checkSolid,
-              message: response.message,
-              position: 'top'
-            });
+            this.notifySuccess(response.message);
+
             this.$router.push('characters');
           }
         })
@@ -91,13 +89,7 @@ export default {
           this.ajaxActive = false;
           this.$q.loadingBar.stop();
 
-          this.$q.notify({
-            color: 'red-5',
-            textColor: 'white',
-            icon: this.icons.exclamationTriangleSolid,
-            message: error.message,
-            position: 'top'
-          });
+          this.notifyError(error.message);
         });
     }
   },

@@ -17,7 +17,9 @@ export function fetchCharactersPreviews({ commit }) {
           reject({
             process: 'fetch-characters',
             status: response.status,
-            fetched: false
+            fetched: false,
+            message:
+              'Oops 😬. An error occured while fetching your characters from the server. Please contact the support'
           });
         }
       })

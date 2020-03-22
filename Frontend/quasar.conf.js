@@ -62,7 +62,10 @@ module.exports = function quasarConf() {
         'QTabs',
         'QTabPanel',
         'QTabPanels',
-        'QSeparator'
+        'QSeparator',
+        'QImg',
+        'QAvatar',
+        'QScrollArea'
       ],
 
       directives: ['Ripple'],

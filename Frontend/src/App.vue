@@ -13,10 +13,6 @@ export default {
       size: '5px',
       position: 'top'
     });
-
-    this.$q.notify({
-      progress: true
-    });
   }
 };
 </script>

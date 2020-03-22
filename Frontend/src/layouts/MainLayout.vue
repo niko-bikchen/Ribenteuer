@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh LpR fFf">
-    <q-header class="bg-transparent bb-w">
+    <q-header class="bg-black bb-w">
       <q-toolbar>
         <q-toolbar-title>
           <div class="text-h4 font-bitmgothic q-mb-sm q-mt-md">
@@ -12,7 +12,7 @@
     <q-page-container>
       <router-view></router-view>
     </q-page-container>
-    <q-footer class="bg-transparent bt-w">
+    <q-footer class="bg-black bt-w">
       <q-toolbar>
         <div class="full-width text-center font-tech">
           Ribenteuer 2020
