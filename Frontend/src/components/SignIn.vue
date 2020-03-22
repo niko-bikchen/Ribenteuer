@@ -2,46 +2,87 @@
   <q-form class="q-gutter-sm" @submit="onSubmit">
     <q-input
       v-model="userEmail"
+      :readonly="ajaxActive"
       :rules="validation.email"
       type="text"
       label="Email"
       color="white"
       square
       outlined
+      lazy-rules
     >
       <template v-slot:append=""> <q-icon :name="icons.envelopeSolid"> </q-icon></template>
     </q-input>
     <q-input
       v-model="userPassword"
+      :readonly="ajaxActive"
       :rules="validation.password"
       type="password"
       label="Password"
       color="white"
       square
       outlined
+      lazy-rules
     >
       <template v-slot:append=""> <q-icon :name="icons.asteriskSolid"> </q-icon></template>
     </q-input>
     <div class="text-center">
-      <q-btn type="submit" color="white" size="md" outline>Submit</q-btn>
+      <q-btn :loading="ajaxActive" type="submit" color="white" size="md" outline>Submit</q-btn>
     </div>
   </q-form>
 </template>
 
 <script>
 export default {
+  name: 'AppSignIn',
   data() {
     return {
       userEmail: '',
       userPassword: '',
       rememberMe: false,
       validation: {},
-      icons: {}
+      icons: {},
+      ajaxActive: false
     };
   },
   methods: {
     onSubmit() {
-      this.$router.push('characters');
+      const userData = {
+        email: this.userEmail,
+        password: this.userPassword
+      };
+
+      this.ajaxActive = true;
+      this.$q.loadingBar.start();
+      this.$store
+        .dispatch('userEntry/signInUser', userData)
+        .then(response => {
+          this.ajaxActive = false;
+          this.$q.loadingBar.stop();
+
+          if (response.status === 200) {
+            this.$q.notify({
+              color: 'green-5',
+              textColor: 'white',
+              icon: this.icons.checkSolid,
+              message: response.message,
+              position: 'top'
+            });
+            this.$router.push('characters');
+          }
+        })
+        .catch(error => {
+          this.ajaxActive = false;
+          this.$q.loadingBar.stop();
+
+          this.$q.notify({
+            color: 'red-5',
+            textColor: 'white',
+            icon: this.icons.exclamationTriangleSolid,
+            message: error.message,
+            position: 'top'
+          });
+        });
     }
   },
   created() {

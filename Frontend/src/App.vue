@@ -6,6 +6,17 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  created() {
+    this.$q.loadingBar.setDefaults({
+      color: 'light-blue-6',
+      size: '5px',
+      position: 'top'
+    });
+
+    this.$q.notify({
+      progress: true
+    });
+  }
 };
 </script>

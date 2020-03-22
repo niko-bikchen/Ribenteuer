@@ -15,6 +15,9 @@ export default function() {
       envelopeSolid: laEnvelopeSolid,
       asteriskSolid: laAsteriskSolid,
       idCardSolid: laIdCardSolid
+    },
+    user: {
+      isAuthenticated: false
     }
   };
 }

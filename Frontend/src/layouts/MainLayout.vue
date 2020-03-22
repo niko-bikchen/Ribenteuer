@@ -10,9 +10,7 @@
       </q-toolbar>
     </q-header>
     <q-page-container>
-      <q-page>
-        <router-view></router-view>
-      </q-page>
+      <router-view></router-view>
     </q-page-container>
     <q-footer class="bg-transparent bt-w">
       <q-toolbar>
@@ -28,6 +26,7 @@
 import { laUserSolid } from '@quasar/extras/line-awesome';
 
 export default {
+  name: 'AppMainLayout',
   created() {
     this.$q.dark.set(true);
 

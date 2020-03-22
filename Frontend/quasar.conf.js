@@ -68,7 +68,7 @@ module.exports = function quasarConf() {
       directives: ['Ripple'],
 
       // Quasar plugins
-      plugins: []
+      plugins: ['Notify', 'LoadingBar']
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
