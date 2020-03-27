@@ -5,28 +5,43 @@
         <app-character-list
           :charactersPreviews="charactersPreviews"
           :listHeight="characterPreviewsListHeight"
+          v-on:characterClicked="showCharacterPreview"
+          v-on:createCharacter="createNewCharacter"
         ></app-character-list>
       </div>
-      <div class="col-6">World</div>
+      <div class="col-6 b-l-w">
+        <app-character-preview :character="characterToPreview"></app-character-preview>
+      </div>
     </div>
   </q-page>
 </template>
 
 <script>
-import CharacterList from 'components/CharacterList.vue';
+import CharacterList from '../components/CharacterList.vue';
+import CharacterPreview from '../components/CharacterPreview';
 import notifyUtils from '../mixins/notify.js';
 
 export default {
   name: 'AppUserCharacters',
   mixins: [notifyUtils],
   components: {
-    appCharacterList: CharacterList
+    appCharacterList: CharacterList,
+    appCharacterPreview: CharacterPreview
   },
   data() {
     return {
       charactersPreviews: [],
-      characterPreviewsListHeight: 0
+      characterPreviewsListHeight: 0,
+      characterToPreview: {}
     };
+  },
+  methods: {
+    showCharacterPreview(character) {
+      this.characterToPreview = { ...character };
+    },
+    createNewCharacter() {
+      this.$router.push('character-creation');
+    }
   },
   created() {
     this.$q.loadingBar.start();

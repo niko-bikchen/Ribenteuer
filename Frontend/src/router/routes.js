@@ -26,6 +26,17 @@ const routes = [
             next();
           }
         }
+      },
+      {
+        path: 'character-creation',
+        component: () => import('pages/CharacterCreation'),
+        beforeEnter: (to, from, next) => {
+          if (!store.getters['userEntry/getUserAuthenticationStatus']) {
+            next('/');
+          } else {
+            next();
+          }
+        }
       }
     ]
   }

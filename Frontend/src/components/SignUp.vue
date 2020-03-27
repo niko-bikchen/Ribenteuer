@@ -11,7 +11,7 @@
       square
       lazy-rules
     >
-      <template v-slot:append=""> <q-icon :name="icons.idCardSolid"> </q-icon></template>
+      <template v-slot:append> <q-icon :name="icons.idCardSolid"> </q-icon></template>
     </q-input>
     <q-input
       v-model="user.email"
@@ -24,7 +24,7 @@
       square
       lazy-rules
     >
-      <template v-slot:append=""> <q-icon :name="icons.envelopeSolid"> </q-icon></template>
+      <template v-slot:append> <q-icon :name="icons.envelopeSolid"> </q-icon></template>
     </q-input>
     <q-input
       v-model="user.password"
@@ -94,13 +94,13 @@ export default {
     }
   },
   created() {
-    const validators = this.$store.getters['userEntry/getValidators'];
+    const validators = this.$store.getters['globalStore/getValidators'];
 
     this.validation.email = validators.email;
     this.validation.password = validators.passwordNew;
     this.validation.nickname = validators.nickname;
 
-    const icons = this.$store.getters['userEntry/getIcons'];
+    const icons = this.$store.getters['globalStore/getIcons'];
 
     this.icons.envelopeSolid = icons.envelopeSolid;
     this.icons.asteriskSolid = icons.asteriskSolid;
