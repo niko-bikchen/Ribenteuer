@@ -1,5 +1,8 @@
 export default function() {
   return {
-    characters: []
+    charactersDescriptions: [],
+    character: {},
+    classesDescriptions: [],
+    classes: []
   };
 }

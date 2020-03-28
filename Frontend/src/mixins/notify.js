@@ -5,7 +5,7 @@ const notifyUtils = {
     };
   },
   methods: {
-    notifySuccess(message) {
+    notifySuccess(message, timeout = 2500) {
       this.$q.notify({
         color: 'green-5',
         textColor: 'white',
@@ -13,18 +13,18 @@ const notifyUtils = {
         message,
         position: 'top',
         progress: true,
-        timeout: 1500
+        timeout
       });
     },
-    notifyError(message) {
+    notifyError(message, timeout = 2500) {
       this.$q.notify({
-        color: 'green-5',
+        color: 'red-5',
         textColor: 'white',
         icon: this.icons.exclamationTriangleSolid,
         message,
         position: 'top',
         progress: true,
-        timeout: 1500
+        timeout
       });
     }
   },

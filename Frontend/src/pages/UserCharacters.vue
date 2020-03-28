@@ -56,7 +56,9 @@ export default {
           const listHeader = document.getElementById('character-list__header');
           const app = document.getElementById('q-app');
 
-          this.charactersPreviews = this.$store.getters['userCharacters/getUserCharactersPreviews'];
+          this.charactersPreviews = this.$store.getters[
+            'userCharacters/getUserCharactersDescriptions'
+          ];
 
           this.characterPreviewsListHeight =
             app.offsetHeight -

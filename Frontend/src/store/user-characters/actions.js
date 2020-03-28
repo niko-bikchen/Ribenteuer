@@ -1,37 +1,78 @@
 import axios from 'axios';
 
-export function fetchCharactersPreviews({ commit }) {
+function makeRequest(
+  axiosFunction,
+  { requestId, successStatus, successMessage, errorMessage, storeRelatedAction }
+) {
   return new Promise((resolve, reject) => {
-    axios
-      .get('/api/get-characters-previews')
+    axiosFunction
       .then(response => {
-        if (response.status === 200) {
-          commit('SET_USER_CHARACTERS', response.data);
+        if (response.status === successStatus) {
+          storeRelatedAction(response.data);
 
           resolve({
-            process: 'fetch-characters',
+            requestId,
             status: response.status,
-            fetched: true
+            message: successMessage,
+            customStatus: 'RF-G',
+            data: response.data
           });
         } else {
           reject({
-            process: 'fetch-characters',
+            requestId,
             status: response.status,
-            fetched: false,
-            message:
-              'Oops 😬. An error occured while fetching your characters from the server. Please contact the support'
+            message: errorMessage,
+            customStatus: 'RF-B'
           });
         }
       })
       .catch(error => {
         reject({
-          process: 'fetch-characters',
+          requestId,
           status: error.response.status,
-          fetched: false,
-          message:
-            'Oops 😬. An error occured while fetching your characters from the server. Please contact the support',
+          message: errorMessage,
+          customStatus: 'RNF-E',
           error
         });
       });
+  });
+}
+
+export function fetchCharactersPreviews({ commit }) {
+  return makeRequest(axios.get('/api/get-characters-descriptions'), {
+    requestId: 'fetch-characters-previews',
+    successStatus: 200,
+    successMessage: '',
+    errorMessage:
+      'Oops 😬. An error occurred while fetching your characters from the server. Please contact the support',
+    storeRelatedAction: data => {
+      commit('SET_USER_CHARACTERS_DESCRIPTIONS', data.characterDescriptions);
+    }
+  });
+}
+
+export function fetchClassesDescriptions({ commit }) {
+  return makeRequest(axios.get('/api/get-classes-descriptions'), {
+    requestId: 'fetch-classes-descriptions',
+    successStatus: 200,
+    successMessage: '',
+    errorMessage:
+      'Oops 😬. An error occurred while fetching character classes from the server. Please contact the support',
+    storeRelatedAction: data => {
+      commit('SET_CLASSES_DESCRIPTIONS', data.classesDescriptions);
+    }
+  });
+}
+
+export function fetchClasses({ commit }) {
+  return makeRequest(axios.get('/api/get-classes'), {
+    requestId: 'fetch-classes',
+    successStatus: 200,
+    successMessage: '',
+    errorMessage:
+      'Oops 😬. An error occurred while fetching classes from the server. Please contact the support',
+    storeRelatedAction: data => {
+      commit('SET_CLASSES', data.classes);
+    }
   });
 }
