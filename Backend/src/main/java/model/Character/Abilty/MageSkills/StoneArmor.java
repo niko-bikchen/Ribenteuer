@@ -4,34 +4,38 @@ import model.Character.Abilty.AbilityImpl;
 
 public class StoneArmor extends AbilityImpl {
 
+    private double defenseMult;
+
+    public StoneArmor(){
+        this.lvlOfAbil=0;
+        this.lvl=1;
+        this.defenseMult=1;
+        this.cdTurns=7;
+        this.activityTurnsNum=3;
+        this.cdDeTurnsLef=0;
+        this.acTurnsLeft=0;
+        this.active=false;
+    }
+
     @Override
     public String abilityName() {
-        return null;
+        return "stone armor";
     }
 
     @Override
     public double additionalDamageTaken() {
-        return 0;
+        return defenseMult;
     }
 
     @Override
     public void upAbility() {
+        if(lvlOfAbil==0){
+            defenseMult=0.7;
+        }else{
+            defenseMult-=0.15;
+        }
 
-    }
-
-    @Override
-    public boolean isActive() {
-        return false;
-    }
-
-    @Override
-    public double additionalAdilityDamage() {
-        return 0;
-    }
-
-    @Override
-    public double additionalHeal() {
-        return 0;
+        lvlOfAbil+=1;
     }
 
     @Override

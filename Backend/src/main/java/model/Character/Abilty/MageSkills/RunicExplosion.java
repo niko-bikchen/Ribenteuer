@@ -5,35 +5,42 @@ import model.Character.Abilty.AbilityImpl;
 
 public class RunicExplosion extends AbilityImpl {
 
-    @Override
-    public String abilityName() {
-        return null;
+    private double dmgMult;
+
+    public RunicExplosion(){
+        this.lvlOfAbil=0;
+        this.lvl=1;
+        this.dmgMult=1;
+        this.cdTurns=6;
+        this.activityTurnsNum=1;
+        this.cdDeTurnsLef=0;
+        this.acTurnsLeft=0;
+        this.active=false;
     }
 
     @Override
-    public double additionalDamageTaken() {
-        return 0;
+    public String abilityName() {
+        return "runic explosion";
     }
+
 
     @Override
     public void upAbility() {
+        if(lvlOfAbil==0){
+            dmgMult=1.15;
+        }else{
+            dmgMult+=0.15;
+        }
 
-    }
+        lvlOfAbil+=1;
 
-    @Override
-    public boolean isActive() {
-        return false;
     }
 
     @Override
     public double additionalAdilityDamage() {
-        return 0;
+        return dmgMult;
     }
 
-    @Override
-    public double additionalHeal() {
-        return 0;
-    }
 
     @Override
     public String description() {

@@ -25,11 +25,6 @@ public class Anger extends AbilityImpl {
     }
 
     @Override
-    public double additionalDamageTaken() {
-        return 1;
-    }
-
-    @Override
     public void upAbility() {
         if(lvlOfAbil==0){
             dmgMult=1.15;
@@ -44,11 +39,6 @@ public class Anger extends AbilityImpl {
     @Override
     public double additionalAdilityDamage() {
         return dmgMult;
-    }
-
-    @Override
-    public double additionalHeal() {
-        return 1;
     }
 
     @Override

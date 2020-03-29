@@ -5,34 +5,41 @@ import model.Character.Abilty.AbilityImpl;
 
 public class MagicalVampirism extends AbilityImpl {
 
-    @Override
-    public String abilityName() {
-        return null;
+    private double vampMult;
+
+
+
+    public MagicalVampirism(){
+        this.lvlOfAbil=0;
+        this.lvl=2;
+        this.vampMult=0;
+        this.cdTurns=10;
+        this.activityTurnsNum=1;
+        this.cdDeTurnsLef=0;
+        this.acTurnsLeft=0;
+        this.active=false;
     }
 
     @Override
-    public double additionalDamageTaken() {
-        return 0;
+    public String abilityName() {
+        return "magical vampirism";
     }
+
 
     @Override
     public void upAbility() {
+        if(lvlOfAbil==0){
+            vampMult=0.6;
+        }else{
+            vampMult+=0.1;
+        }
 
+        lvlOfAbil+=1;
     }
 
     @Override
-    public boolean isActive() {
-        return false;
-    }
-
-    @Override
-    public double additionalAdilityDamage() {
-        return 0;
-    }
-
-    @Override
-    public double additionalHeal() {
-        return 0;
+    public double additionalVampirism(){
+        return vampMult;
     }
 
     @Override

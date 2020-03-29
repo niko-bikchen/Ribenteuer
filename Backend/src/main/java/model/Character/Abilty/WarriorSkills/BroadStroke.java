@@ -23,11 +23,6 @@ public class BroadStroke extends AbilityImpl {
     }
 
     @Override
-    public double additionalDamageTaken() {
-        return 1;
-    }
-
-    @Override
     public void upAbility() {
         if(lvlOfAbil==0){
             dmgMult=1.5;
@@ -45,12 +40,8 @@ public class BroadStroke extends AbilityImpl {
     }
 
     @Override
-    public double additionalHeal() {
-        return 1;
-    }
-
-    @Override
     public String description() {
         return null;
     }
+
 }

@@ -3,10 +3,10 @@ package model.Character.Abilty;
 
 public abstract class AbilityImpl implements Ability {
 
-    //level of the ability
+    //division of the ability
     protected int lvl;
 
-    //division of the ability
+    //level of the ability
     protected int lvlOfAbil;
 
     //is the ability active
@@ -28,7 +28,9 @@ public abstract class AbilityImpl implements Ability {
     public abstract String abilityName();
 
     @Override
-    public abstract double additionalDamageTaken();
+    public double additionalDamageTaken(){
+        return 1;
+    }
 
     @Override
     public int skillPointsNeeded() {
@@ -41,12 +43,12 @@ public abstract class AbilityImpl implements Ability {
 
     @Override
     public int levelOfAbility() {
-        return lvl;
+        return lvlOfAbil;
     }
 
     @Override
     public int abilityDivision(){
-        return lvlOfAbil;
+        return lvl;
     }
 
 
@@ -76,10 +78,14 @@ public abstract class AbilityImpl implements Ability {
     }
 
     @Override
-    public abstract double additionalAdilityDamage();
+    public double additionalAdilityDamage(){
+        return 1;
+    }
 
     @Override
-    public abstract double additionalHeal();
+    public double additionalHeal(){
+        return 1;
+    }
 
     @Override
     public int cd() {
@@ -99,6 +105,22 @@ public abstract class AbilityImpl implements Ability {
 
     @Override
     public abstract String description();
+
+
+    @Override
+    public double additionalVampirism(){
+        return 0;
+    }
+
+    @Override
+   public double additionalAvoidChance(){
+        return 0;
+    }
+
+    @Override
+    public double additionalFinishingOff(){
+        return 0;
+    }
 
     @Override
     public void turnPassed() {

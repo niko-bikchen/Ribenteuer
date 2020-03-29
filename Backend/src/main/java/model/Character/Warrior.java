@@ -2,6 +2,12 @@
 package model.Character;
 
 
+import model.Character.Abilty.Ability;
+import model.Character.Abilty.RogueSkills.*;
+import model.Character.Abilty.WarriorSkills.*;
+
+import java.util.ArrayList;
+
 public class Warrior extends GameCharacter {
 
     public Warrior(String ownerId,String name){
@@ -12,8 +18,14 @@ public class Warrior extends GameCharacter {
         this.strength=26;
         this.intelligence=14;
         this.agility=20;
-
         this.expNeeded=calculateExpNeeded();
+
+        abilities=new ArrayList<Ability>();
+        abilities.add(new Anger());
+        abilities.add(new BroadStroke());
+        abilities.add(new Courage());
+        abilities.add(new DefensiveStand());
+        abilities.add(new DestructiveStrike());
     }
 
 }

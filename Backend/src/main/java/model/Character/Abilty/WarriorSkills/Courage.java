@@ -23,10 +23,6 @@ public class Courage extends AbilityImpl {
         return "courage";
     }
 
-    @Override
-    public double additionalDamageTaken() {
-        return 1;
-    }
 
     @Override
     public void upAbility() {
@@ -40,11 +36,6 @@ public class Courage extends AbilityImpl {
     }
 
     @Override
-    public double additionalAdilityDamage() {
-        return 1;
-    }
-
-    @Override
     public double additionalHeal() {
         return healMult;
     }
@@ -53,4 +44,5 @@ public class Courage extends AbilityImpl {
     public String description() {
         return null;
     }
+
 }

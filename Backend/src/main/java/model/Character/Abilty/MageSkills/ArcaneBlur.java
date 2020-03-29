@@ -1,18 +1,18 @@
-package model.Character.Abilty.RogueSkills;
+package model.Character.Abilty.MageSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
 
-public class IntombmentTrick extends AbilityImpl {
+public class ArcaneBlur extends AbilityImpl {
 
-    private double finishingMult;
+    private double avoidMult;
 
-    public IntombmentTrick(){
+    public ArcaneBlur(){
         this.lvlOfAbil=0;
         this.lvl=2;
-        this.finishingMult=0;
-        this.cdTurns=8;
-        this.activityTurnsNum=1;
+        this.avoidMult=0;
+        this.cdTurns=5;
+        this.activityTurnsNum=2;
         this.cdDeTurnsLef=0;
         this.acTurnsLeft=0;
         this.active=false;
@@ -20,23 +20,24 @@ public class IntombmentTrick extends AbilityImpl {
 
     @Override
     public String abilityName() {
-        return "intombment trick";
+        return "arcane blur";
     }
+
 
     @Override
     public void upAbility() {
         if(lvlOfAbil==0){
-            finishingMult=0.3;
+            avoidMult=0.3;
         }else{
-            finishingMult+=0.15;
+            avoidMult+=0.1;
         }
 
         lvlOfAbil+=1;
     }
 
     @Override
-    public double additionalFinishingOff(){
-        return finishingMult;
+    public double additionalAvoidChance(){
+        return avoidMult;
     }
 
     @Override

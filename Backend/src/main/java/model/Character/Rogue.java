@@ -1,6 +1,12 @@
 //developed by Vladyslav Haponenko
 package model.Character;
 
+import model.Character.Abilty.Ability;
+import model.Character.Abilty.MageSkills.*;
+import model.Character.Abilty.RogueSkills.*;
+
+import java.util.ArrayList;
+
 public class Rogue extends GameCharacter {
 
     public Rogue(String ownerId,String name){
@@ -11,8 +17,15 @@ public class Rogue extends GameCharacter {
         this.strength=17;
         this.intelligence=18;
         this.agility=25;
-
         this.expNeeded=calculateExpNeeded();
+
+        abilities=new ArrayList<Ability>();
+        abilities.add(new Consentration());
+        abilities.add(new CunningAttack());
+        abilities.add(new HailOfBlows());
+        abilities.add(new IntombmentTrick());
+        abilities.add(new Thrust());
+
     }
 
 }

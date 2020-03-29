@@ -39,19 +39,9 @@ public class DefensiveStand extends AbilityImpl {
         lvlOfAbil+=1;
     }
 
-
-    @Override
-    public double additionalAdilityDamage() {
-        return 1;
-    }
-
-    @Override
-    public double additionalHeal() {
-        return 1;
-    }
-
     @Override
     public String description() {
         return null;
     }
+
 }

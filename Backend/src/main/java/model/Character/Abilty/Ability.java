@@ -37,6 +37,11 @@ public interface Ability {
 
     int abilityDivision();
 
+    double additionalVampirism();
+
+    double additionalAvoidChance();
+
+    double additionalFinishingOff();
 
 
 

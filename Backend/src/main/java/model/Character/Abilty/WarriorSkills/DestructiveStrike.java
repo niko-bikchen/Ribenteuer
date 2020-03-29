@@ -1,20 +1,19 @@
-package model.Character.Abilty.RogueSkills;
-
+package model.Character.Abilty.WarriorSkills;
 
 import model.Character.Abilty.AbilityImpl;
 
-public class CunningAttack extends AbilityImpl {
+public class DestructiveStrike extends AbilityImpl {
 
     private double defenseMult;
 
     private double dmgMult;
 
-    public CunningAttack(){
+    public DestructiveStrike(){
         this.lvlOfAbil=0;
         this.lvl=1;
-        this.dmgMult=1;
         this.defenseMult=1;
-        this.cdTurns=6;
+        this.dmgMult=1;
+        this.cdTurns=3;
         this.activityTurnsNum=1;
         this.cdDeTurnsLef=0;
         this.acTurnsLeft=0;
@@ -23,7 +22,7 @@ public class CunningAttack extends AbilityImpl {
 
     @Override
     public String abilityName() {
-        return "cunning attack";
+        return "destructive strike";
     }
 
     @Override
@@ -34,11 +33,11 @@ public class CunningAttack extends AbilityImpl {
     @Override
     public void upAbility() {
         if(lvlOfAbil==0){
-            dmgMult=0.6;
             defenseMult=0.85;
+            dmgMult=1.2;
         }else{
-            dmgMult+=0.1;
             defenseMult-=0.1;
+            dmgMult+=0.15;
         }
 
         lvlOfAbil+=1;
@@ -52,6 +51,7 @@ public class CunningAttack extends AbilityImpl {
 
     @Override
     public String description() {
-        return null;
+        return null ;
     }
+
 }
