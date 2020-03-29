@@ -62,13 +62,22 @@ module.exports = function quasarConf() {
         'QTabs',
         'QTabPanel',
         'QTabPanels',
-        'QSeparator'
+        'QSeparator',
+        'QImg',
+        'QAvatar',
+        'QScrollArea',
+        'QStepper',
+        'QStep',
+        'QStepperNavigation',
+        'QCarousel',
+        'QCarouselControl',
+        'QCarouselSlide'
       ],
 
       directives: ['Ripple'],
 
       // Quasar plugins
-      plugins: []
+      plugins: ['Notify', 'LoadingBar']
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie

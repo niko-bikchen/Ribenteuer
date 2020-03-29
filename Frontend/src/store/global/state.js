@@ -1,9 +1,16 @@
 import {
-  laEnvelopeSolid,
   laAsteriskSolid,
-  laIdCardSolid,
   laCheckSolid,
-  laExclamationTriangleSolid
+  laEnvelopeSolid,
+  laExclamationTriangleSolid,
+  laFistRaisedSolid,
+  laIdCardSolid,
+  laUserCircleSolid,
+  laUsersSolid,
+  laPenNibSolid,
+  laIdCard,
+  laPlusSolid,
+  laMinusSolid
 } from '@quasar/extras/line-awesome';
 
 export default function() {
@@ -15,6 +22,11 @@ export default function() {
       nickname: [
         value => value !== '' || 'Nickname cannot be empty',
         value => /^\w+$/.test(value) || 'Nickname can contain only letters, numberts and undersores'
+      ],
+      characterName: [
+        value => value !== '' || 'Character name cannot be empty',
+        value =>
+          /^\w+$/.test(value) || 'Character name can contain only letters, numbers and underscores'
       ]
     },
     icons: {
@@ -22,10 +34,14 @@ export default function() {
       asteriskSolid: laAsteriskSolid,
       idCardSolid: laIdCardSolid,
       checkSolid: laCheckSolid,
-      exclamationTriangleSolid: laExclamationTriangleSolid
-    },
-    user: {
-      isAuthenticated: false
+      exclamationTriangleSolid: laExclamationTriangleSolid,
+      userCircleSolid: laUserCircleSolid,
+      usersSolid: laUsersSolid,
+      fistRaisedSolid: laFistRaisedSolid,
+      penNibSolid: laPenNibSolid,
+      idCard: laIdCard,
+      plus: laPlusSolid,
+      minus: laMinusSolid
     }
   };
 }
