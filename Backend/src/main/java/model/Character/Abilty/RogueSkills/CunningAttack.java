@@ -2,8 +2,10 @@ package model.Character.Abilty.RogueSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AbilityDamageBuff;
+import model.Mechanics.ArmorBuff;
 
-public class CunningAttack extends AbilityImpl {
+public class CunningAttack extends AbilityImpl  {
 
     private double defenseMult;
 
@@ -27,7 +29,7 @@ public class CunningAttack extends AbilityImpl {
     }
 
     @Override
-    public double additionalDamageTaken() {
+    public double multDamageTaken() {
         return defenseMult;
     }
 
@@ -46,7 +48,7 @@ public class CunningAttack extends AbilityImpl {
 
 
     @Override
-    public double additionalAdilityDamage() {
+    public double multAbilityDamage() {
         return dmgMult;
     }
 

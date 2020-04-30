@@ -2,10 +2,11 @@ package model.Character.Abilty.RogueSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AbilityDamageBuff;
 
 import java.util.Random;
 
-public class HailOfBlows extends AbilityImpl {
+public class HailOfBlows extends AbilityImpl  {
 
     private double chanceToHit;
 
@@ -42,7 +43,7 @@ public class HailOfBlows extends AbilityImpl {
     }
 
     @Override
-    public double additionalAdilityDamage() {
+    public double multAbilityDamage() {
         Random r = new Random();
         double dmgM=0;
         for( int i=0 ;i<3;i++){

@@ -10,6 +10,8 @@ public interface CharacterRepository extends MongoRepository<GameCharacter,Strin
 
     public List<GameCharacter> findGameCharacterByOwnerId(String id);
 
+    public GameCharacter findByNameAndOwnerId(String name, String ownerId);
+
     public void deleteAllByOwnerId(String id);
 
 

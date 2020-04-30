@@ -5,8 +5,6 @@ public interface Ability {
 
     String abilityName();
 
-    double additionalDamageTaken();
-
     int skillPointsNeeded();
 
     void upAbility();
@@ -21,9 +19,7 @@ public interface Ability {
 
     void deactivate();
 
-    double additionalAdilityDamage();
-
-    double additionalHeal();
+    void setStartOptions();
 
     int cd();
 
@@ -37,11 +33,9 @@ public interface Ability {
 
     int abilityDivision();
 
-    double additionalVampirism();
+    boolean activatable();
 
-    double additionalAvoidChance();
 
-    double additionalFinishingOff();
 
 
 

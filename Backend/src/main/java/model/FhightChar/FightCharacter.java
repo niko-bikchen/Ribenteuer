@@ -3,6 +3,7 @@ package model.FhightChar;
 
 import lombok.Getter;
 import lombok.Setter;
+import model.Character.Abilty.Ability;
 import model.Character.GameCharacter;
 
 
@@ -18,6 +19,9 @@ public class FightCharacter {
 
     public FightCharacter(GameCharacter character){
         currentChar=character;
+
+        deactivateAllSkills();
+
         int strength=currentChar.getStrength();
         int intell=currentChar.getIntelligence();
         int agility=currentChar.getAgility();
@@ -28,11 +32,23 @@ public class FightCharacter {
         abilityDmg=1.3*intell + 0.3*strength;
     }
 
-    public int makePlainDmg(){
+    public void turnPassed(){
+        currentChar.turnPassed();
+    }
+
+    public void activateSkill(String name){
+        currentChar.activateSkill(name);
+    }
+
+    public void deactivateSkill(String name){
+        currentChar.deactivateSkill(name);
+    }
+
+    public int makePlainDmg(double targetHealth){
         return 0;
     }
 
-    public int makeAbilityDmg(){
+    public int makeAbilityDmg(double targetHealth){
         return 0;
     }
 
@@ -46,5 +62,12 @@ public class FightCharacter {
 
     public void selfHeal(int heal){
         currentHealth= Math.min(currentHealth+heal,maxHealth);
+    }
+
+
+    private void deactivateAllSkills(){
+        for(Ability ability: currentChar.getAbilities()){
+           ability.setStartOptions();
+        }
     }
 }

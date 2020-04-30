@@ -2,10 +2,11 @@ package model.Character.Abilty.MageSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AbilityDamageBuff;
 
 import java.util.Random;
 
-public class FieryBlizzard extends AbilityImpl {
+public class FieryBlizzard extends AbilityImpl  {
 
     private double dmgMult;
     private double chanceToHit;
@@ -42,7 +43,7 @@ public class FieryBlizzard extends AbilityImpl {
     }
 
     @Override
-    public double additionalAdilityDamage() {
+    public double multAbilityDamage() {
         Random r = new Random();
         double h_first=r.nextDouble();
         double h_second=r.nextDouble();

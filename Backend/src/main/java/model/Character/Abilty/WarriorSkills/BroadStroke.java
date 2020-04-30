@@ -1,8 +1,10 @@
 package model.Character.Abilty.WarriorSkills;
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AbilityDamageBuff;
+import model.Mechanics.HealBuff;
 
-public class BroadStroke extends AbilityImpl {
+public class BroadStroke extends AbilityImpl  {
 
     private double dmgMult;
 
@@ -35,7 +37,7 @@ public class BroadStroke extends AbilityImpl {
 
 
     @Override
-    public double additionalAdilityDamage() {
+    public double multAbilityDamage() {
         return dmgMult;
     }
 

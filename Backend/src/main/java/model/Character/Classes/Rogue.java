@@ -1,9 +1,9 @@
 //developed by Vladyslav Haponenko
-package model.Character;
+package model.Character.Classes;
 
 import model.Character.Abilty.Ability;
-import model.Character.Abilty.MageSkills.*;
 import model.Character.Abilty.RogueSkills.*;
+import model.Character.GameCharacter;
 
 import java.util.ArrayList;
 
@@ -18,6 +18,8 @@ public class Rogue extends GameCharacter {
         this.intelligence=18;
         this.agility=25;
         this.expNeeded=calculateExpNeeded();
+
+        this.classOfChar = "rogue";
 
         abilities=new ArrayList<Ability>();
         abilities.add(new Consentration());

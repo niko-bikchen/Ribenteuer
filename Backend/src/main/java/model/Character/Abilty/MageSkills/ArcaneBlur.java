@@ -2,8 +2,9 @@ package model.Character.Abilty.MageSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AvoidBuff;
 
-public class ArcaneBlur extends AbilityImpl {
+public class ArcaneBlur extends AbilityImpl  {
 
     private double avoidMult;
 
@@ -36,7 +37,7 @@ public class ArcaneBlur extends AbilityImpl {
     }
 
     @Override
-    public double additionalAvoidChance(){
+    public double multAvoidChance(){
         return avoidMult;
     }
 

@@ -1,8 +1,9 @@
 package model.Character.Abilty.MageSkills;
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.ArmorBuff;
 
-public class StoneArmor extends AbilityImpl {
+public class StoneArmor extends AbilityImpl  {
 
     private double defenseMult;
 
@@ -23,7 +24,7 @@ public class StoneArmor extends AbilityImpl {
     }
 
     @Override
-    public double additionalDamageTaken() {
+    public double multDamageTaken() {
         return defenseMult;
     }
 

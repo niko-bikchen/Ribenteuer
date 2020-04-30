@@ -2,6 +2,7 @@ package model.Character.Abilty.MageSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AbilityDamageBuff;
 
 public class RunicExplosion extends AbilityImpl {
 
@@ -37,7 +38,7 @@ public class RunicExplosion extends AbilityImpl {
     }
 
     @Override
-    public double additionalAdilityDamage() {
+    public double multAbilityDamage() {
         return dmgMult;
     }
 

@@ -37,10 +37,14 @@ public class CharacterServiceImpl implements CharacterService {
     //
     //parameter type expected to be rogue, mage or warrior
     @Override
-    public void makeCharacter(String type,String ownerId,String name) {
-        CharacterFactory cf= new CharacterFactory();
-        characterRepository.save(cf.createCharacter(type,ownerId,name));
-        Optional<GameCharacter> c=characterRepository.findById("1");
+    public void makeCharacter(String type, String ownerId, String name) {
+        CharacterFactory cf = new CharacterFactory();
+
+        GameCharacter gChar = characterRepository.findByNameAndOwnerId(name, ownerId);
+
+        if( gChar == null){
+            characterRepository.save(cf.createCharacter(type, ownerId, name));
+        }
     }
 
     @Override
@@ -69,6 +73,6 @@ public class CharacterServiceImpl implements CharacterService {
 
     @Override
     public List<Item> takeAllItemsById(String id) {
-        return itemRepository.findByOwnerId(id);
+        return itemRepository.findByCharId(id);
     }
 }

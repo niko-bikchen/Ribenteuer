@@ -1,11 +1,11 @@
 //developed by Vladyslav Haponenko
-package model.Character;
+package model.Character.Classes;
 
 import model.Character.Abilty.Ability;
 import model.Character.Abilty.MageSkills.*;
+import model.Character.GameCharacter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Mage extends GameCharacter {
 
@@ -18,6 +18,8 @@ public class Mage extends GameCharacter {
         this.intelligence=28;
         this.agility=18;
         this.expNeeded=calculateExpNeeded();
+
+        this.classOfChar = "mage";
 
         abilities=new ArrayList<Ability>();
         abilities.add(new FieryBlizzard());

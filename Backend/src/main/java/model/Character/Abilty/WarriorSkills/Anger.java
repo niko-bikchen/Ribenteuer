@@ -2,8 +2,9 @@ package model.Character.Abilty.WarriorSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AbilityDamageBuff;
 
-public class Anger extends AbilityImpl {
+public class Anger extends AbilityImpl  {
 
     private double dmgMult;
 
@@ -37,7 +38,7 @@ public class Anger extends AbilityImpl {
 
 
     @Override
-    public double additionalAdilityDamage() {
+    public double multAbilityDamage() {
         return dmgMult;
     }
 

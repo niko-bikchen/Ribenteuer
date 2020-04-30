@@ -1,8 +1,10 @@
 package model.Character.Abilty.RogueSkills;
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AbilityDamageBuff;
+import model.Mechanics.AvoidBuff;
 
-public class Thrust extends AbilityImpl {
+public class Thrust extends AbilityImpl  {
 
     private double avoidChance;
 
@@ -39,12 +41,12 @@ public class Thrust extends AbilityImpl {
     }
 
     @Override
-    public double additionalAdilityDamage() {
+    public double multAbilityDamage() {
         return dmgMult;
     }
 
     @Override
-    public double additionalAvoidChance(){
+    public double multAvoidChance(){
         return avoidChance;
     }
 

@@ -2,8 +2,10 @@ package model.Character.Abilty.RogueSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AbilityDamageBuff;
+import model.Mechanics.FinishingOffBuff;
 
-public class IntombmentTrick extends AbilityImpl {
+public class IntombmentTrick extends AbilityImpl  {
 
     private double finishingMult;
 
@@ -35,7 +37,7 @@ public class IntombmentTrick extends AbilityImpl {
     }
 
     @Override
-    public double additionalFinishingOff(){
+    public double multFinishingOff(){
         return finishingMult;
     }
 

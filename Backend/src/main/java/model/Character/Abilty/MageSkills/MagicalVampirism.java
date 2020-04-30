@@ -2,8 +2,9 @@ package model.Character.Abilty.MageSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.VampirismBuff;
 
-public class MagicalVampirism extends AbilityImpl {
+public class MagicalVampirism extends AbilityImpl  {
 
     private double vampMult;
 
@@ -38,7 +39,7 @@ public class MagicalVampirism extends AbilityImpl {
     }
 
     @Override
-    public double additionalVampirism(){
+    public double multVampirism(){
         return vampMult;
     }
 

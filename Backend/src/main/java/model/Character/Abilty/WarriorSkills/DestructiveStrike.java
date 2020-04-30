@@ -1,8 +1,12 @@
 package model.Character.Abilty.WarriorSkills;
 
+import model.Character.Abilty.Ability;
 import model.Character.Abilty.AbilityImpl;
+import model.Character.CharacterService;
+import model.Mechanics.AbilityDamageBuff;
+import model.Mechanics.ArmorBuff;
 
-public class DestructiveStrike extends AbilityImpl {
+public class DestructiveStrike extends AbilityImpl  {
 
     private double defenseMult;
 
@@ -26,7 +30,7 @@ public class DestructiveStrike extends AbilityImpl {
     }
 
     @Override
-    public double additionalDamageTaken() {
+    public double multDamageTaken() {
         return defenseMult;
     }
 
@@ -45,7 +49,7 @@ public class DestructiveStrike extends AbilityImpl {
 
 
     @Override
-    public double additionalAdilityDamage() {
+    public double multAbilityDamage() {
         return dmgMult;
     }
 

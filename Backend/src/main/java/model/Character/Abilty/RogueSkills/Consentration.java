@@ -2,8 +2,9 @@ package model.Character.Abilty.RogueSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AvoidBuff;
 
-public class Consentration extends AbilityImpl {
+public class Consentration extends AbilityImpl  {
 
 
     private double avoidChance;
@@ -36,7 +37,7 @@ public class Consentration extends AbilityImpl {
     }
 
     @Override
-    public double additionalAvoidChance(){
+    public double multAvoidChance(){
         return avoidChance;
     }
 
