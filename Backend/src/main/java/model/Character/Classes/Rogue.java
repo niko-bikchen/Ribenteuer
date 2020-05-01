@@ -7,9 +7,12 @@ import model.Character.GameCharacter;
 
 import java.util.ArrayList;
 
+import static model.Character.ClassesCategories.ROGUE;
+
 public class Rogue extends GameCharacter {
 
     public Rogue(String ownerId,String name){
+        super();
         this.currentExp=0;
         this.lvl=1;
         this.name=name;
@@ -19,10 +22,12 @@ public class Rogue extends GameCharacter {
         this.agility=25;
         this.expNeeded=calculateExpNeeded();
 
-        this.classOfChar = "rogue";
+        this.classOfChar = ROGUE;
+
+        this.portraitId = 2;
 
         abilities=new ArrayList<Ability>();
-        abilities.add(new Consentration());
+        abilities.add(new Concentration());
         abilities.add(new CunningAttack());
         abilities.add(new HailOfBlows());
         abilities.add(new IntombmentTrick());

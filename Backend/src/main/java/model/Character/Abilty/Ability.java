@@ -1,42 +1,167 @@
+//developed by Vladyslav Haponenko
 package model.Character.Abilty;
 
+import model.Mechanics.*;
 
-public interface Ability {
+import java.util.List;
 
-    String abilityName();
+public abstract class Ability implements AbilityDamageBuff, AvoidBuff, VampirismBuff, HealBuff, ArmorBuff, FinishingOffBuff {
 
-    int skillPointsNeeded();
+    //division of the ability
+    protected int lvl;
 
-    void upAbility();
+    //level of the ability
+    protected int lvlOfAbil;
 
-    int levelOfAbility();
+    //is the ability active
+    protected boolean active;
 
-    boolean isActive();
+    //how much time for being active again it takes
+    protected int cdTurns;
 
-    void activate();
+    //how much turns it will be active
+    protected int activityTurnsNum;
 
-    int activityTurns();
+    //how many turns the ability will be inactive
+    protected int cdDeTurnsLef;
 
-    void deactivate();
+    //how many turns the ability will be active
+    protected int acTurnsLeft;
 
-    void setStartOptions();
+    protected List<MechanicsCategory> types;
 
-    int cd();
+    protected double avoidChance = 0;
 
-    int activityTurnsLeft();
+    protected double finishingOff = 0;
 
-    int cdTurnsLeft();
+    protected double vampirism = 0;
 
-    String description();
+    protected double abilityDamage = 1;
 
-    void turnPassed();
+    protected double heal = 0;
 
-    int abilityDivision();
-
-    boolean activatable();
-
-
+    protected double damageTaken = 1;
 
 
+
+
+    public abstract String abilityName();
+
+    public int skillPointsNeeded() {
+        return lvlOfAbil-1+lvl;
+    }
+
+    public abstract void upAbility();
+
+    public int levelOfAbility() {
+        return lvlOfAbil;
+    }
+
+    public int abilityDivision(){
+        return lvl;
+    }
+
+    public boolean isActive(){
+        return active;
+    }
+
+    public void activate() {
+        if(cdDeTurnsLef == 0){
+            active=true;
+            acTurnsLeft=activityTurnsNum;
+        }
+    }
+
+
+    public int activityTurns() {
+        return activityTurnsNum;
+    }
+
+
+    public void deactivate() {
+        active=false;
+        acTurnsLeft=0;
+        cdDeTurnsLef=cdTurns;
+    }
+
+
+    public int cd() {
+        return cdTurns;
+    }
+
+
+    public int activityTurnsLeft() {
+        return acTurnsLeft;
+    }
+
+
+    public int cdTurnsLeft(){
+        return cdDeTurnsLef;
+    }
+
+
+    // should be called at the start of each fight in order
+    // to drop cd
+    public void setStartOptions(){
+        deactivate();
+        cdDeTurnsLef = 0;
+    }
+
+    //this method checks if a skill can be activated
+    public boolean activatable(){
+        return !isActive() &&  (cdDeTurnsLef == 0);
+    }
+
+
+    public abstract String description();
+
+
+
+    // at the end of every turn this method should be called
+    // to change a skill cd
+    public void turnPassed() {
+        if(isActive()){
+            if (acTurnsLeft-1 == 0){
+                deactivate();
+            }else{
+                acTurnsLeft-=1;
+            }
+        }else{
+            cdDeTurnsLef=(cdDeTurnsLef == 0 ? 0 : cdDeTurnsLef-1 );
+        }
+
+    }
+
+
+    //implementations of all mechanics of skills
+    @Override
+    public double multAvoidChance(){
+        return avoidChance;
+    }
+
+    @Override
+    public double multFinishingOff(){
+        return finishingOff;
+    }
+
+    @Override
+    public double multVampirism(){
+        return vampirism;
+    }
+
+    @Override
+    public double multAbilityDamage(){
+        return abilityDamage;
+    }
+
+    @Override
+    public double multHeal(){
+        return heal;
+    }
+
+    @Override
+    public double multDamageTaken(){
+        return damageTaken;
+    }
 
 }

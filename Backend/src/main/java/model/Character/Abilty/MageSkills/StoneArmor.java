@@ -1,21 +1,28 @@
 package model.Character.Abilty.MageSkills;
 
-import model.Character.Abilty.AbilityImpl;
-import model.Mechanics.ArmorBuff;
+import model.Character.Abilty.Ability;
+import model.Mechanics.MechanicsCategory;
 
-public class StoneArmor extends AbilityImpl  {
+import java.util.LinkedList;
+
+import static model.Mechanics.MechanicsCategory.ARMOR;
+
+public class StoneArmor extends Ability {
 
     private double defenseMult;
 
     public StoneArmor(){
-        this.lvlOfAbil=0;
-        this.lvl=1;
-        this.defenseMult=1;
-        this.cdTurns=7;
-        this.activityTurnsNum=3;
-        this.cdDeTurnsLef=0;
-        this.acTurnsLeft=0;
-        this.active=false;
+        this.lvlOfAbil = 1;
+        this.lvl = 1;
+        this.damageTaken = 0.7;
+        this.cdTurns = 7;
+        this.activityTurnsNum = 3;
+        this.cdDeTurnsLef = 0;
+        this.acTurnsLeft = 0;
+        this.active = false;
+
+        this.types = new LinkedList<MechanicsCategory>();
+        types.add(ARMOR);
     }
 
     @Override
@@ -23,20 +30,11 @@ public class StoneArmor extends AbilityImpl  {
         return "stone armor";
     }
 
-    @Override
-    public double multDamageTaken() {
-        return defenseMult;
-    }
 
     @Override
     public void upAbility() {
-        if(lvlOfAbil==0){
-            defenseMult=0.7;
-        }else{
-            defenseMult-=0.15;
-        }
-
-        lvlOfAbil+=1;
+        damageTaken -= 0.15;
+        lvlOfAbil += 1;
     }
 
     @Override

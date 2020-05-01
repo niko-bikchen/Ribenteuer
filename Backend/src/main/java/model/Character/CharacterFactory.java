@@ -9,17 +9,17 @@ public class CharacterFactory extends BaseCharacterFactory {
 
     //returns a character relatively chosen type
     @Override
-    public GameCharacter createCharacter(String type, String ownerId, String name) {
+    public GameCharacter createCharacter(ClassesCategories type, String ownerId, String name) {
         GameCharacter character;
-        switch (type.toLowerCase())
+        switch (type)
         {
-            case "rogue":
+            case ROGUE:
                 character=new Rogue(ownerId,name);
                 break;
-            case "mage":
+            case MAGE:
                 character=new Mage(ownerId,name);
                 break;
-            case "warrior":
+            case WARRIOR:
                 character=new Warrior(ownerId,name);
                 break;
             default: throw new IllegalArgumentException("No such character.");

@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ItemRepository extends MongoRepository<Item, String> {
 
-    //retrieves all items which belong to the user with the id
+    //retrieves all items which belong to the char with the id
     public List<Item> findByCharId(String id);
 
     public void deleteAllByOwnerId(String id);

@@ -1,27 +1,29 @@
 package model.Character.Abilty.WarriorSkills;
 
 import model.Character.Abilty.Ability;
-import model.Character.Abilty.AbilityImpl;
-import model.Character.CharacterService;
-import model.Mechanics.AbilityDamageBuff;
-import model.Mechanics.ArmorBuff;
+import model.Mechanics.MechanicsCategory;
 
-public class DestructiveStrike extends AbilityImpl  {
+import java.util.LinkedList;
 
-    private double defenseMult;
+import static model.Mechanics.MechanicsCategory.ABILITY_DAMAGE;
+import static model.Mechanics.MechanicsCategory.ARMOR;
 
-    private double dmgMult;
+public class DestructiveStrike extends Ability {
 
     public DestructiveStrike(){
-        this.lvlOfAbil=0;
+        this.lvlOfAbil=1;
         this.lvl=1;
-        this.defenseMult=1;
-        this.dmgMult=1;
+        this.damageTaken=0.85;
+        this.abilityDamage=1.2;
         this.cdTurns=3;
         this.activityTurnsNum=1;
         this.cdDeTurnsLef=0;
         this.acTurnsLeft=0;
         this.active=false;
+
+        this.types = new LinkedList<MechanicsCategory>();
+        types.add(ABILITY_DAMAGE);
+        types.add(ARMOR);
     }
 
     @Override
@@ -30,28 +32,12 @@ public class DestructiveStrike extends AbilityImpl  {
     }
 
     @Override
-    public double multDamageTaken() {
-        return defenseMult;
-    }
-
-    @Override
     public void upAbility() {
-        if(lvlOfAbil==0){
-            defenseMult=0.85;
-            dmgMult=1.2;
-        }else{
-            defenseMult-=0.1;
-            dmgMult+=0.15;
-        }
-
+        damageTaken-=0.1;
+        abilityDamage+=0.15;
         lvlOfAbil+=1;
     }
 
-
-    @Override
-    public double multAbilityDamage() {
-        return dmgMult;
-    }
 
     @Override
     public String description() {
