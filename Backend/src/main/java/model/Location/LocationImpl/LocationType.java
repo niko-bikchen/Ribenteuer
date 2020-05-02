@@ -1,4 +1,4 @@
-package model.Location;
+package model.Location.LocationImpl;
 
 public enum LocationType {
     FOREST,

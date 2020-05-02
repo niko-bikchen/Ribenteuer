@@ -2,7 +2,7 @@ package model.Location.Monsters;
 
 import lombok.Getter;
 import lombok.Setter;
-import model.Location.LocationType;
+import model.Location.LocationImpl.LocationType;
 
 @Getter
 @Setter
@@ -26,5 +26,9 @@ public abstract class Monster {
 
     public void takeDamage(double damage){
         health -= damage;
+    }
+
+    public double makeDamage(){
+        return (Math.random() * ((maxDamage - minDamage) + 1)) + minDamage;
     }
 }

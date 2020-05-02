@@ -1,6 +1,6 @@
 package model.Location.Monsters.CastleDungeonMonsters;
 
-import model.Location.LocationType;
+import model.Location.LocationImpl.LocationType;
 import model.Location.Monsters.Monster;
 
 public class Skeleton extends Monster {

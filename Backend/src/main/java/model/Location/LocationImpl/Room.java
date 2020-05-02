@@ -1,5 +1,5 @@
 //developed by Vladyslav Haponenko
-package model.Location;
+package model.Location.LocationImpl;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
 package model.Location.Monsters.ForestMonsters;
 
-import model.Location.LocationType;
+import model.Location.LocationImpl.LocationType;
 import model.Location.Monsters.Monster;
 
 public class Cutthroat extends Monster {
