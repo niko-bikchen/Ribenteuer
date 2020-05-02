@@ -13,6 +13,10 @@ public abstract class Item {
 
     @Id
     protected String id;
-    protected String ownerId;
+
+    protected String charId;
+
     protected boolean equipped;
+
+    protected String name;
 }

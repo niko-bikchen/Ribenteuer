@@ -32,10 +32,38 @@ public abstract class GameCharacter {
 
     protected int strength;
 
+    protected String classOfChar;
+
     protected List<Ability> abilities;
 
-    protected int calculateExpNeeded(){
+    public int calculateExpNeeded(){
         return lvl*100;
     }
+
+    public void activateSkill(String name){
+        for(Ability ability : abilities){
+            if(ability.abilityName().equals(name) && ability.activatable()){
+                ability.activate();
+                break;
+            }
+        }
+    }
+
+    public void deactivateSkill(String name){
+        for(Ability ability : abilities){
+            if(ability.abilityName().equals(name) && ability.isActive()){
+                ability.deactivate();
+                break;
+            }
+        }
+    }
+
+    public void turnPassed(){
+        for(Ability ability : abilities){
+            ability.turnPassed();
+        }
+    }
+
+
 
 }

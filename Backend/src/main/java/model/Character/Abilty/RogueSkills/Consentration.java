@@ -2,37 +2,43 @@ package model.Character.Abilty.RogueSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AvoidBuff;
 
-public class Consentration extends AbilityImpl {
+public class Consentration extends AbilityImpl  {
 
-    @Override
-    public String abilityName() {
-        return null;
+
+    private double avoidChance;
+
+    public Consentration(){
+        this.lvlOfAbil=0;
+        this.lvl=1;
+        this.avoidChance=0;
+        this.cdTurns=7;
+        this.activityTurnsNum=3;
+        this.cdDeTurnsLef=0;
+        this.acTurnsLeft=0;
+        this.active=false;
     }
 
     @Override
-    public double additionalDamageTaken() {
-        return 0;
+    public String abilityName() {
+        return "consentration";
     }
 
     @Override
     public void upAbility() {
+        if(lvlOfAbil==0){
+            avoidChance=0.15;
+        }else{
+            avoidChance+=0.15;
+        }
 
+        lvlOfAbil+=1;
     }
 
     @Override
-    public boolean isActive() {
-        return false;
-    }
-
-    @Override
-    public double additionalAdilityDamage() {
-        return 0;
-    }
-
-    @Override
-    public double additionalHeal() {
-        return 0;
+    public double multAvoidChance(){
+        return avoidChance;
     }
 
     @Override

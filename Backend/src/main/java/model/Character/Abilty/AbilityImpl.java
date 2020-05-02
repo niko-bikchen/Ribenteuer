@@ -1,12 +1,14 @@
 //developed by Vladyslav Haponenko
 package model.Character.Abilty;
 
-public abstract class AbilityImpl implements Ability {
+import model.Mechanics.*;
 
-    //level of the ability
-    protected int lvl;
+public abstract class AbilityImpl implements Ability, AbilityDamageBuff, AvoidBuff, VampirismBuff, HealBuff, ArmorBuff, FinishingOffBuff {
 
     //division of the ability
+    protected int lvl;
+
+    //level of the ability
     protected int lvlOfAbil;
 
     //is the ability active
@@ -27,8 +29,6 @@ public abstract class AbilityImpl implements Ability {
     @Override
     public abstract String abilityName();
 
-    @Override
-    public abstract double additionalDamageTaken();
 
     @Override
     public int skillPointsNeeded() {
@@ -41,12 +41,12 @@ public abstract class AbilityImpl implements Ability {
 
     @Override
     public int levelOfAbility() {
-        return lvl;
+        return lvlOfAbil;
     }
 
     @Override
     public int abilityDivision(){
-        return lvlOfAbil;
+        return lvl;
     }
 
 
@@ -75,11 +75,6 @@ public abstract class AbilityImpl implements Ability {
         cdDeTurnsLef=cdTurns;
     }
 
-    @Override
-    public abstract double additionalAdilityDamage();
-
-    @Override
-    public abstract double additionalHeal();
 
     @Override
     public int cd() {
@@ -98,11 +93,24 @@ public abstract class AbilityImpl implements Ability {
 
 
     @Override
+    public void setStartOptions(){
+        deactivate();
+        cdDeTurnsLef = 0;
+    }
+
+    @Override
+    public boolean activatable(){
+        return !isActive() &&  (cdDeTurnsLef == 0);
+    }
+
+    @Override
     public abstract String description();
+
+
 
     @Override
     public void turnPassed() {
-        if(active){
+        if(isActive()){
             if (acTurnsLeft-1 == 0){
                 deactivate();
             }else{
@@ -113,4 +121,36 @@ public abstract class AbilityImpl implements Ability {
         }
 
     }
+
+
+    @Override
+    public double multAvoidChance(){
+        return 0;
+    }
+
+    @Override
+    public double multFinishingOff(){
+        return 0;
+    }
+
+    @Override
+    public double multVampirism(){
+        return 0;
+    }
+
+    @Override
+    public double multAbilityDamage(){
+        return 1;
+    }
+
+    @Override
+    public double multHeal(){
+        return 1;
+    }
+
+    @Override
+    public double multDamageTaken(){
+        return 1;
+    }
+
 }

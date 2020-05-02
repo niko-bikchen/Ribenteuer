@@ -2,6 +2,7 @@ package model.Character.Abilty.WarriorSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.ArmorBuff;
 
 public class DefensiveStand extends AbilityImpl {
 
@@ -24,7 +25,7 @@ public class DefensiveStand extends AbilityImpl {
     }
 
     @Override
-    public double additionalDamageTaken() {
+    public double multDamageTaken() {
        return defenseMult;
     }
 
@@ -39,19 +40,9 @@ public class DefensiveStand extends AbilityImpl {
         lvlOfAbil+=1;
     }
 
-
-    @Override
-    public double additionalAdilityDamage() {
-        return 1;
-    }
-
-    @Override
-    public double additionalHeal() {
-        return 1;
-    }
-
     @Override
     public String description() {
         return null;
     }
+
 }

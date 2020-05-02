@@ -2,38 +2,56 @@ package model.Character.Abilty.RogueSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.AbilityDamageBuff;
 
-public class HailOfBlows extends AbilityImpl {
+import java.util.Random;
 
-    @Override
-    public String abilityName() {
-        return null;
+public class HailOfBlows extends AbilityImpl  {
+
+    private double chanceToHit;
+
+    private double dmgMult;
+
+    public HailOfBlows(){
+        this.lvlOfAbil=0;
+        this.lvl=2;
+        this.dmgMult=1;
+        this.chanceToHit=0;
+        this.cdTurns=8;
+        this.activityTurnsNum=1;
+        this.cdDeTurnsLef=0;
+        this.acTurnsLeft=0;
+        this.active=false;
     }
 
     @Override
-    public double additionalDamageTaken() {
-        return 0;
+    public String abilityName() {
+        return "hail of blows";
     }
 
     @Override
     public void upAbility() {
+        if(lvlOfAbil==0){
+            dmgMult=0.7;
+            chanceToHit=0.8;
+        }else{
+            dmgMult+=0.1;
+            chanceToHit+=0.05;
+        }
 
+        lvlOfAbil+=1;
     }
 
     @Override
-    public boolean isActive() {
-        return false;
+    public double multAbilityDamage() {
+        Random r = new Random();
+        double dmgM=0;
+        for( int i=0 ;i<3;i++){
+            dmgM+=(r.nextDouble() <= chanceToHit ? dmgMult : 0);
+        }
+        return dmgM;
     }
 
-    @Override
-    public double additionalAdilityDamage() {
-        return 0;
-    }
-
-    @Override
-    public double additionalHeal() {
-        return 0;
-    }
 
     @Override
     public String description() {

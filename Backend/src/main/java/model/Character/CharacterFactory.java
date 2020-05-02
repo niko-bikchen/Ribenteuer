@@ -1,6 +1,10 @@
 //developed by Vladyslav Haponenko
 package model.Character;
 
+import model.Character.Classes.Mage;
+import model.Character.Classes.Rogue;
+import model.Character.Classes.Warrior;
+
 public class CharacterFactory extends BaseCharacterFactory {
 
     //returns a character relatively chosen type

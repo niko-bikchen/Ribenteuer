@@ -2,8 +2,9 @@ package model.Character.Abilty.WarriorSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.HealBuff;
 
-public class Courage extends AbilityImpl {
+public class Courage extends AbilityImpl  {
 
     private double healMult;
 
@@ -23,10 +24,6 @@ public class Courage extends AbilityImpl {
         return "courage";
     }
 
-    @Override
-    public double additionalDamageTaken() {
-        return 1;
-    }
 
     @Override
     public void upAbility() {
@@ -40,12 +37,7 @@ public class Courage extends AbilityImpl {
     }
 
     @Override
-    public double additionalAdilityDamage() {
-        return 1;
-    }
-
-    @Override
-    public double additionalHeal() {
+    public double multHeal() {
         return healMult;
     }
 
@@ -53,4 +45,5 @@ public class Courage extends AbilityImpl {
     public String description() {
         return null;
     }
+
 }

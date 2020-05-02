@@ -2,37 +2,45 @@ package model.Character.Abilty.MageSkills;
 
 
 import model.Character.Abilty.AbilityImpl;
+import model.Mechanics.VampirismBuff;
 
-public class MagicalVampirism extends AbilityImpl {
+public class MagicalVampirism extends AbilityImpl  {
+
+    private double vampMult;
+
+
+
+    public MagicalVampirism(){
+        this.lvlOfAbil=0;
+        this.lvl=2;
+        this.vampMult=0;
+        this.cdTurns=10;
+        this.activityTurnsNum=1;
+        this.cdDeTurnsLef=0;
+        this.acTurnsLeft=0;
+        this.active=false;
+    }
 
     @Override
     public String abilityName() {
-        return null;
+        return "magical vampirism";
     }
 
-    @Override
-    public double additionalDamageTaken() {
-        return 0;
-    }
 
     @Override
     public void upAbility() {
+        if(lvlOfAbil==0){
+            vampMult=0.6;
+        }else{
+            vampMult+=0.1;
+        }
 
+        lvlOfAbil+=1;
     }
 
     @Override
-    public boolean isActive() {
-        return false;
-    }
-
-    @Override
-    public double additionalAdilityDamage() {
-        return 0;
-    }
-
-    @Override
-    public double additionalHeal() {
-        return 0;
+    public double multVampirism(){
+        return vampMult;
     }
 
     @Override
