@@ -1,6 +1,6 @@
 <template>
-  <q-page padding class="font-tech">
-    <q-stepper v-model="step" color="primary" header-nav animated>
+  <q-page padding>
+    <q-stepper v-model="step" color="primary" animated>
       <q-step
         :name="1"
         title="General character information"
@@ -34,11 +34,16 @@
               :arrows="!ajaxActive"
               infinite
             >
-              <q-carousel-slide v-for="i in 3" :key="i" :name="i">
-                <div class="text-center">
+              <q-carousel-slide
+                v-for="i in 15"
+                :key="i"
+                :name="i"
+                class="flex justify-center items-center"
+              >
+                <div class="text-center full-width">
                   <q-img
-                    :src="`statics/portraits/${i}.jpg`"
-                    style="width: 40%; border: 3px double white"
+                    :src="`statics/portraits/pic${i}1.png`"
+                    style="width: 30%; height: auto; border: 3px double white"
                   ></q-img>
                 </div>
               </q-carousel-slide>
@@ -47,7 +52,7 @@
         </div>
         <q-stepper-navigation class="text-right">
           <q-btn
-            @click="$router.push('/characters')"
+            @click="$router.push('/user/characters')"
             color="dark"
             class="text-white q-mr-md"
             label="Exit"
@@ -83,10 +88,10 @@
               <q-item
                 :clickable="!ajaxActive"
                 dark
-                v-for="(characterClass, index) in classesDescriptions"
+                v-for="(characterClass, index) in classes"
                 :key="index"
                 @click="classPicked(characterClass)"
-                :active="characterClass.name === featuredClassDescription.name"
+                :active="characterClass.name === currentClass.name"
                 active-class="bg-white text-black text-bold"
               >
                 <q-item-section>{{ characterClass.name }}</q-item-section>
@@ -94,12 +99,12 @@
             </q-list>
           </div>
           <div class="col-6 q-gutter-md">
-            <div v-if="Object.keys(featuredClassDescription).length !== 0" class="full-height">
+            <div v-if="Object.keys(currentClass).length !== 0" class="full-height">
               <div class="text-center text-h5">
-                {{ featuredClassDescription.name }}
+                {{ currentClass.name }}
               </div>
               <div class="q-pa-md">
-                {{ featuredClassDescription.description }}
+                {{ currentClass.description }}
               </div>
             </div>
             <div v-else>
@@ -133,6 +138,7 @@
         :icon="icons.fistRaisedSolid"
         :active-icon="icons.fistRaisedSolid"
         :active-color="'white'"
+        :done="step > 3"
         :done-icon="icons.checkSolid"
         :done-color="'white'"
       >
@@ -177,7 +183,13 @@
             label="Back"
             class="q-ml-sm text-white"
           ></q-btn>
-          <q-btn @click="step = 4" color="dark" outline class="text-white" label="Continue"></q-btn>
+          <q-btn
+            @click="checkPoints"
+            color="dark"
+            outline
+            class="text-white"
+            label="Continue"
+          ></q-btn>
         </q-stepper-navigation>
       </q-step>
 
@@ -190,13 +202,39 @@
         :done-icon="icons.checkSolid"
         :done-color="'white'"
       >
-        Try out different ad text to see what brings in the most customers, and learn how to enhance
-        your ads using features like ad extensions. If you run into any problems with your ads, find
-        out how to tell if they're running and how to resolve approval issues.
-
-        <q-stepper-navigation>
-          <q-btn color="primary" label="Finish" />
-          <q-btn flat @click="step = 2" color="primary" label="Back" class="q-ml-sm" />
+        <div class="row">
+          <div class="col-12 text-center">
+            <app-character-preview
+              :character="newCharacterData"
+              :portrait-width="10"
+            ></app-character-preview>
+            <div class="col-12 text-subtitle1 text-left">
+              <p class="text-uppercase text-center q-mt-md">Character Skills</p>
+              <p v-for="skill in newCharacterData.skills" :key="skill.name">
+                <span class="text-weight-bolder">{{ skill.name }}</span>
+                <br />
+                {{ skill.description }}
+              </p>
+            </div>
+          </div>
+        </div>
+        <q-stepper-navigation class="text-right">
+          <q-btn
+            flat
+            @click="step = 3"
+            color="white"
+            label="Back"
+            :disable="ajaxActive"
+            class="q-ml-sm"
+          />
+          <q-btn
+            color="dark"
+            class="text-white"
+            outline
+            label="Finish"
+            :loading="ajaxActive"
+            @click="createCharacter"
+          />
         </q-stepper-navigation>
       </q-step>
     </q-stepper>
@@ -205,18 +243,22 @@
 
 <script>
 import notifyUtils from '../mixins/notify';
+import CharacterPreview from '../components/CharacterPreview';
 
 export default {
   name: 'AppCharacterCreation',
   mixins: [notifyUtils],
+  components: {
+    appCharacterPreview: CharacterPreview
+  },
   data() {
     return {
       step: 1,
       icons: {},
       validation: {},
       ajaxActive: false,
-      classesDescriptions: [],
-      featuredClassDescription: {},
+      classes: [],
+      currentClass: {},
       featuredClass: {},
       pointsToWaste: 10,
       newCharacterData: {
@@ -238,14 +280,12 @@ export default {
       } else {
         this.ajaxActive = true;
         this.$store
-          .dispatch('userCharacters/fetchClassesDescriptions')
+          .dispatch('gameWorldScope/fetchCharacterClasses')
           .then(response => {
             this.ajaxActive = false;
             if (response.status === 200) {
               this.step += 1;
-              this.classesDescriptions = this.$store.getters[
-                'userCharacters/getClassesDescriptions'
-              ];
+              this.classes = this.$store.getters['gameWorldScope/getCharacterClasses'];
             } else {
               this.notifyError(response.message);
             }
@@ -256,39 +296,28 @@ export default {
           });
       }
     },
-    classPicked(classDescription) {
-      this.featuredClassDescription = classDescription;
-      this.newCharacterData.class = classDescription.name;
+    classPicked(characterClass) {
+      this.currentClass = characterClass;
     },
     checkClass() {
-      if (this.featuredClassDescription.name === undefined) {
+      if (this.currentClass.name === undefined) {
         this.notifyError('Please, pick a class for your character');
       } else {
-        this.ajaxActive = true;
-        this.$store
-          .dispatch('userCharacters/fetchClasses')
-          .then(response => {
-            this.ajaxActive = false;
-            if (response.status === 200) {
-              this.step += 1;
-              this.pointsToWaste = 10;
-              const classes = this.$store.getters['userCharacters/getClasses'];
+        const { classes } = this;
 
-              for (let i = 0; i < classes.length; i += 1) {
-                if (classes[i].name === this.newCharacterData.class) {
-                  this.featuredClass = { ...classes[i] };
-                  this.newCharacterData.stats = { ...classes[i].baseStats };
-                  this.newCharacterData.skills = [...classes[i].skills];
-                }
-              }
-            } else {
-              this.notifyError(response.message);
+        if (this.newCharacterData.class !== this.currentClass.name) {
+          this.newCharacterData.class = this.currentClass.name;
+          for (let i = 0; i < classes.length; i += 1) {
+            if (classes[i].name === this.newCharacterData.class) {
+              this.featuredClass = { ...classes[i] };
+              this.newCharacterData.stats = { ...classes[i].baseStats };
+              this.newCharacterData.skills = [...classes[i].skills];
             }
-          })
-          .catch(error => {
-            this.ajaxActive = false;
-            this.notifyError(error.message);
-          });
+          }
+          this.pointsToWaste = 10;
+        }
+
+        this.step += 1;
       }
     },
     addPoint(stat) {
@@ -302,6 +331,37 @@ export default {
         this.newCharacterData.stats[stat] -= 1;
         this.pointsToWaste += 1;
       }
+    },
+    checkPoints() {
+      if (this.pointsToWaste !== 0) {
+        this.notifyError('Please, spend all your free points');
+      } else {
+        this.step += 1;
+      }
+    },
+    createCharacter() {
+      this.ajaxActive = true;
+      this.$store
+        .dispatch('userScope/createCharacter', {
+          name: this.newCharacterData.name,
+          level: this.newCharacterData.level,
+          portraitId: this.newCharacterData.portraitId,
+          stats: this.newCharacterData.stats,
+          class: this.newCharacterData.class
+        })
+        .then(response => {
+          this.ajaxActive = false;
+          if (response.status === 201) {
+            this.$router.push('/user/characters');
+            this.notifySuccess(response.message);
+          } else {
+            this.notifyError(response.message);
+          }
+        })
+        .catch(error => {
+          this.ajaxActive = false;
+          this.notifyError(error.message);
+        });
     },
     statToString(stat) {
       switch (stat) {
@@ -317,7 +377,7 @@ export default {
     }
   },
   created() {
-    const icons = this.$store.getters['globalStore/getIcons'];
+    const icons = this.$store.getters['iconsScope/getIcons'];
 
     this.icons.fistRaisedSolid = icons.fistRaisedSolid;
     this.icons.checkSolid = icons.checkSolid;
@@ -327,7 +387,7 @@ export default {
     this.icons.plus = icons.plus;
     this.icons.minus = icons.minus;
 
-    const validators = this.$store.getters['globalStore/getValidators'];
+    const validators = this.$store.getters['validationScope/getValidators'];
 
     this.validation.characterName = validators.characterName;
   }

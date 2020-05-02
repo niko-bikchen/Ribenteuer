@@ -1,10 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
 
-if (process.env.NODE_ENV !== 'development') {
-  axios.defaults.baseURL = window.location.origin;
-} else {
-  axios.defaults.baseURL = 'https://d199c1a7-b3ad-4604-955d-bb5c0ac7e42d.mock.pstmn.io';
-}
+axios.defaults.baseURL = 'https://a7cefdc5-869a-49e8-af10-e2e7db3fd142.mock.pstmn.io';
 
 Vue.prototype.$axios = axios;

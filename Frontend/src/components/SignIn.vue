@@ -52,38 +52,34 @@ export default {
     onSubmit() {
       const userData = {
         email: this.userEmail,
-        password: this.userPassword
+        password: this.userPassword,
+        activeRole: 'ROLE_USER'
       };
 
       this.ajaxActive = true;
-      this.$q.loadingBar.start();
       this.$store
-        .dispatch('userEntry/signInUser', userData)
+        .dispatch('userScope/signIn', userData)
         .then(response => {
           this.ajaxActive = false;
-          this.$q.loadingBar.stop();
 
           if (response.status === 200) {
             this.notifySuccess(response.message);
-
-            this.$router.push('characters');
+            this.$router.push('user/characters');
           }
         })
         .catch(error => {
           this.ajaxActive = false;
-          this.$q.loadingBar.stop();
-
           this.notifyError(error.message);
         });
     }
   },
   created() {
-    const icons = this.$store.getters['globalStore/getIcons'];
+    const icons = this.$store.getters['iconsScope/getIcons'];
 
     this.icons.envelopeSolid = icons.envelopeSolid;
     this.icons.asteriskSolid = icons.asteriskSolid;
 
-    const validators = this.$store.getters['globalStore/getValidators'];
+    const validators = this.$store.getters['validationScope/getValidators'];
 
     this.validation.email = validators.email;
     this.validation.password = validators.notEmpty;
