@@ -37,6 +37,7 @@ import signIn from 'components/SignIn.vue';
 import signUp from 'components/SignUp';
 
 export default {
+  name: 'AppUserEntry',
   data() {
     return {
       tab: 'sign-in'

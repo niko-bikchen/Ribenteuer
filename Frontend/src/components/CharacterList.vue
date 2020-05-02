@@ -1,25 +1,25 @@
 <template>
-  <q-list class="font-tech">
+  <q-list>
     <q-item-label header id="character-list__header">Character List</q-item-label>
 
-    <q-scroll-area :style="`height: ${listHeight}px;`">
+    <app-full-height-column column-header-id="character-list__header">
       <q-item
-        v-for="characterPreview in charactersPreviews"
-        :key="characterPreview.id"
+        v-for="character in characters"
+        :key="character.id"
         clickable
         dark
-        @click="$emit('characterClicked', characterPreview)"
+        @click="$emit('characterClicked', character)"
       >
         <q-item-section avatar>
           <q-avatar>
-            <q-img :src="`statics/portraits/${characterPreview.portraitId}.jpg`"></q-img>
+            <q-img :src="`statics/portraits/pic${character.portraitId}1.png`"></q-img>
           </q-avatar>
         </q-item-section>
 
         <q-item-section>
-          <q-item-label>{{ characterPreview.name }}</q-item-label>
+          <q-item-label>{{ character.name }}</q-item-label>
           <q-item-label caption lines="1">
-            {{ characterPreview.class }}, Level {{ characterPreview.level }}
+            {{ character.class }}, Level {{ character.level }}
           </q-item-label>
         </q-item-section>
       </q-item>
@@ -35,20 +35,21 @@
           <q-item-label>Add New Character</q-item-label>
         </q-item-section>
       </q-item>
-    </q-scroll-area>
+    </app-full-height-column>
   </q-list>
 </template>
 
 <script>
+import FullHeightColumn from './FullHeightColumn';
+
 export default {
   name: 'AppCharacterList',
+  components: {
+    appFullHeightColumn: FullHeightColumn
+  },
   props: {
-    charactersPreviews: {
+    characters: {
       type: Array,
-      required: true
-    },
-    listHeight: {
-      type: Number,
       required: true
     }
   }

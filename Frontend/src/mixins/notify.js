@@ -29,7 +29,7 @@ const notifyUtils = {
     }
   },
   created() {
-    const icons = this.$store.getters['userEntry/getIcons'];
+    const icons = this.$store.getters['iconsScope/getIcons'];
 
     this.icons.checkSolid = icons.checkSolid;
     this.icons.exclamationTriangleSolid = icons.exclamationTriangleSolid;

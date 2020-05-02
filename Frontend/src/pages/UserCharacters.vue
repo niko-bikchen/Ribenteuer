@@ -3,14 +3,28 @@
     <div class="row">
       <div class="col-6">
         <app-character-list
-          :charactersPreviews="charactersPreviews"
-          :listHeight="characterPreviewsListHeight"
-          v-on:characterClicked="showCharacterPreview"
-          v-on:createCharacter="createNewCharacter"
+          :characters="characters"
+          @characterClicked="showCharacter"
+          @createCharacter="createNewCharacter"
         ></app-character-list>
+        <div class="text-center" v-if="showProgress">
+          <q-circular-progress indeterminate size="50px" color="white" class="q-ma-md" />
+        </div>
       </div>
       <div class="col-6 b-l-w">
-        <app-character-preview :character="characterToPreview"></app-character-preview>
+        <div class="q-mb-lg q-mt-xl">
+          <app-character-preview :character="currentCharacter"></app-character-preview>
+        </div>
+        <div v-if="currentCharacter.id" class="text-center">
+          <q-btn label="Play" class="text-white q-mr-md" size="lg" outline> </q-btn>
+          <q-btn
+            label="Edit"
+            class="text-white"
+            size="lg"
+            @click="$router.push(`/user/character/${currentCharacter.id}`)"
+            outline
+          ></q-btn>
+        </div>
       </div>
     </div>
   </q-page>
@@ -30,46 +44,32 @@ export default {
   },
   data() {
     return {
-      charactersPreviews: [],
-      characterPreviewsListHeight: 0,
-      characterToPreview: {}
+      characters: [],
+      currentCharacter: {},
+      charactersListHeight: 0,
+      showProgress: true
     };
   },
   methods: {
-    showCharacterPreview(character) {
-      this.characterToPreview = { ...character };
+    showCharacter(character) {
+      this.currentCharacter = { ...character };
     },
     createNewCharacter() {
       this.$router.push('character-creation');
     }
   },
   created() {
-    this.$q.loadingBar.start();
     this.$store
-      .dispatch('userCharacters/fetchCharactersPreviews')
+      .dispatch('userScope/fetchCharacters')
       .then(response => {
-        this.$q.loadingBar.stop();
-
         if (response.status === 200) {
-          const header = document.getElementsByTagName('header')[0];
-          const footer = document.getElementsByTagName('footer')[0];
-          const listHeader = document.getElementById('character-list__header');
-          const app = document.getElementById('q-app');
-
-          this.charactersPreviews = this.$store.getters[
-            'userCharacters/getUserCharactersDescriptions'
-          ];
-
-          this.characterPreviewsListHeight =
-            app.offsetHeight -
-            (header.offsetHeight + footer.offsetHeight + listHeader.offsetHeight);
+          this.showProgress = false;
+          this.characters = this.$store.getters['userScope/getCharacters'];
         } else {
           this.notifyError(response.message);
         }
       })
       .catch(error => {
-        this.$q.loadingBar.stop();
-
         this.notifyError(error.message);
       });
   }

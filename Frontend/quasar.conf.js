@@ -71,7 +71,13 @@ module.exports = function quasarConf() {
         'QStepperNavigation',
         'QCarousel',
         'QCarouselControl',
-        'QCarouselSlide'
+        'QCarouselSlide',
+        'QCircularProgress',
+        'QLinearProgress',
+        'QBadge',
+        'QTabs',
+        'QTab',
+        'QRouteTab'
       ],
 
       directives: ['Ripple'],
