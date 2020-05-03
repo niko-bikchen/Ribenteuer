@@ -11,7 +11,7 @@ import static model.Character.ClassesCategories.ROGUE;
 
 public class Rogue extends GameCharacter {
 
-    public Rogue(String ownerId,String name){
+    public Rogue(String ownerId,String name, int portraitId){
         super();
         this.currentExp=0;
         this.lvl=1;
@@ -24,7 +24,7 @@ public class Rogue extends GameCharacter {
 
         this.classOfChar = ROGUE;
 
-        this.portraitId = 2;
+        this.portraitId = portraitId;
 
         abilities=new ArrayList<Ability>();
         abilities.add(new Concentration());
