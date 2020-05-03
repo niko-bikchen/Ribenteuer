@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import model.Character.Abilty.Ability;
 import model.Character.GameCharacter;
+import model.Item.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 //the class is supposed to be like a wrapper for dungeon run of a character
@@ -16,6 +18,9 @@ public class FightCharacter {
     private double attackDmg;
     private double abilityDmg;
     private GameCharacter currentChar;
+
+    @Autowired
+    private ItemRepository itemRepository;
 
     public FightCharacter(GameCharacter character){
         currentChar=character;
@@ -69,5 +74,25 @@ public class FightCharacter {
         for(Ability ability: currentChar.getAbilities()){
            ability.setStartOptions();
         }
+    }
+
+    private double collectAvoidChance(){
+        double avoidChance = 0;
+        return 0;
+    }
+
+    private double collectAbilityDamageBuff(){
+        double abilityDamage = 0;
+        return 0;
+    }
+
+    private double collectDamageBuff(){
+        double damage = 0;
+        return 0;
+    }
+
+    private double collectHealBuff(){
+        double heal = 0;
+        return 0;
     }
 }

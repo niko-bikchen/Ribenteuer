@@ -55,6 +55,9 @@ public abstract class Item implements AbilityDamageBuff ,DamageBuff, AvoidBuff, 
 
     protected LvlOfItem lvlOfStrength;
 
+    public boolean isEquipped(){
+        return equipped;
+    }
 
     //implementations of all mechanics of skills
     @Override
