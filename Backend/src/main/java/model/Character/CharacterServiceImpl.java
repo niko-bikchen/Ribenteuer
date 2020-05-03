@@ -39,14 +39,16 @@ public class CharacterServiceImpl implements CharacterService {
     //
     //parameter type expected to be ROGUE, MAGE or WARRIOR
     @Override
-    public void makeCharacter(ClassesCategories type, String ownerId, String name, int portraitId) {
+    public GameCharacter makeCharacter(ClassesCategories type, String ownerId, String name, int portraitId) {
         CharacterFactory cf = new CharacterFactory();
 
         GameCharacter gChar = characterRepository.findByNameAndOwnerId(name, ownerId);
 
+        GameCharacter character = cf.createCharacter(type, ownerId, name, portraitId);
         if( gChar == null){
-            characterRepository.save(cf.createCharacter(type, ownerId, name, portraitId));
+            characterRepository.save(character);
         }
+        return character;
     }
 
     @Override

@@ -14,7 +14,7 @@ public interface CharacterService {
     List<GameCharacter> findAllUsersChars(String id);
 
     //make the Character based on value for it's fields and type
-    void makeCharacter(ClassesCategories type, String ownerId, String name, int portraitId);
+    GameCharacter makeCharacter(ClassesCategories type, String ownerId, String name, int portraitId);
 
     Optional<GameCharacter> findCharacterById(String id);
 
