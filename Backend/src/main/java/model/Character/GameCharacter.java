@@ -37,6 +37,8 @@ public abstract class GameCharacter {
 
     protected int  freeSkillPoints;
 
+    protected int gold;
+
     protected ClassesCategories classOfChar;
 
     protected List<Ability> abilities;
@@ -50,6 +52,7 @@ public abstract class GameCharacter {
     public GameCharacter(){
         freeSkillPoints = 0;
         freeStatPoints = 10;
+        gold = 100;
     }
 
     public void activateSkill(String name){
@@ -114,6 +117,20 @@ public abstract class GameCharacter {
             lvlUp();
         }else{
             currentExp += exp;
+        }
+    }
+
+    public void addGold(int gold){
+        this.gold += Math.abs(gold);
+    }
+
+    public boolean isEnoughGold(int cost){
+        return gold >= cost;
+    }
+
+    public void spendGold(int gold){
+        if(isEnoughGold(gold)){
+            this.gold -= gold;
         }
     }
 

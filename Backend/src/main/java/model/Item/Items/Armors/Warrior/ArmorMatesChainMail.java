@@ -1,5 +1,6 @@
 package model.Item.Items.Armors.Warrior;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -18,7 +19,7 @@ public class ArmorMatesChainMail extends Item {
         this.category = ARMORGARMENT;
         this.strengthNeeded = 25;
         this.cost = 1500;
-        this.lvlOfStrength = 1;
+        this.lvlOfStrength = LvlOfItem.BEGGINER;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         this.mechanicsCategoryList.add(ARMOR);

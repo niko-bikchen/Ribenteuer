@@ -4,6 +4,7 @@ package model.Item;
 import lombok.Getter;
 import lombok.Setter;
 import model.Item.Categories.Categories;
+import model.Item.Categories.LvlOfItem;
 import model.Mechanics.*;
 import org.springframework.data.annotation.Id;
 
@@ -52,7 +53,7 @@ public abstract class Item implements AbilityDamageBuff ,DamageBuff, AvoidBuff, 
 
     protected double damage = 1;
 
-    protected int lvlOfStrength;
+    protected LvlOfItem lvlOfStrength;
 
 
     //implementations of all mechanics of skills

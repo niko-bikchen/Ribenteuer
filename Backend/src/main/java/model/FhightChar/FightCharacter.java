@@ -56,11 +56,11 @@ public class FightCharacter {
         return 0;
     }
 
-    public void take_dmg(int dmg){
+    public void take_dmg(double dmg){
         currentHealth=(dmg > currentHealth ? 0 : currentHealth-dmg);
     }
 
-    public void selfHeal(int heal){
+    public void selfHeal(double heal){
         currentHealth= Math.min(currentHealth+heal,maxHealth);
     }
 

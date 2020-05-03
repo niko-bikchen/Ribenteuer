@@ -6,6 +6,7 @@ import model.Character.Classes.Warrior;
 import model.Character.ClassesCategories;
 import model.Character.GameCharacter;
 import model.Item.Categories.Categories;
+import model.Item.Categories.LvlOfItem;
 import model.Item.Items.Armors.Mage.AdeptsMantle;
 import model.Item.Items.Armors.Mage.ApprenticesMantle;
 import model.Item.Items.Armors.Mage.ArchimageMantle;
@@ -47,7 +48,7 @@ public class ItemFactoryImpl extends BaseItemFactory {
 
 
     @Override
-    public Item createItem(ClassesCategories typeOfChar, Categories typeOfItem, int lvlOfStrength, String charId) {
+    public Item createItem(ClassesCategories typeOfChar, Categories typeOfItem, LvlOfItem lvlOfStrength, String charId) {
         Item item = null;
         switch (typeOfChar)
         {
@@ -57,16 +58,16 @@ public class ItemFactoryImpl extends BaseItemFactory {
                     case HELMET:
                         switch (lvlOfStrength)
                         {
-                            case 1:
+                            case BEGGINER:
                                 item = new TweezersHat(charId);
                                 break;
-                            case 2:
+                            case APPRENTICE:
                                 item = new BanditsHood(charId);
                                 break;
-                            case 3:
+                            case ADEPT:
                                 item = new MaradeursHat(charId);
                                 break;
-                            case 4:
+                            case MASTER:
                                 item = new ShadowMasterHat(charId);
                                 break;
                         }
@@ -74,16 +75,16 @@ public class ItemFactoryImpl extends BaseItemFactory {
                     case WEAPON:
                         switch (lvlOfStrength)
                         {
-                            case 1:
+                            case BEGGINER:
                                 item = new TweezersDagger(charId);
                                 break;
-                            case 2:
+                            case APPRENTICE:
                                 item = new BanditsDagger(charId);
                                 break;
-                            case 3:
+                            case ADEPT:
                                 item = new MaradeursDagger(charId);
                                 break;
-                            case 4:
+                            case MASTER:
                                 item = new ShadowMasterDagger(charId);
                                 break;
                         }
@@ -91,16 +92,16 @@ public class ItemFactoryImpl extends BaseItemFactory {
                     case ARMORGARMENT:
                         switch (lvlOfStrength)
                         {
-                            case 1:
+                            case BEGGINER:
                                 item = new TweezersArmor(charId);
                                 break;
-                            case 2:
+                            case APPRENTICE:
                                 item = new BanditsArmor(charId);
                                 break;
-                            case 3:
+                            case ADEPT:
                                 item = new MaradeursArmor(charId);
                                 break;
-                            case 4:
+                            case MASTER:
                                 item = new ShadowMasterArmor(charId);
                                 break;
                         }
@@ -113,16 +114,16 @@ public class ItemFactoryImpl extends BaseItemFactory {
                     case HELMET:
                         switch (lvlOfStrength)
                         {
-                            case 1:
+                            case BEGGINER:
                                 item = new BeginnersHood(charId);
                                 break;
-                            case 2:
+                            case APPRENTICE:
                                 item = new ApprenticesHood(charId);
                                 break;
-                            case 3:
+                            case ADEPT:
                                 item = new AdeptsHood(charId);
                                 break;
-                            case 4:
+                            case MASTER:
                                 item = new ArchimageHood(charId);
                                 break;
                         }
@@ -130,16 +131,16 @@ public class ItemFactoryImpl extends BaseItemFactory {
                     case WEAPON:
                         switch (lvlOfStrength)
                         {
-                            case 1:
+                            case BEGGINER:
                                 item = new BeginnersStaff(charId);
                                 break;
-                            case 2:
+                            case APPRENTICE:
                                 item = new ApprenticesStaff(charId);
                                 break;
-                            case 3:
+                            case ADEPT:
                                 item = new AdeptsStaff(charId);
                                 break;
-                            case 4:
+                            case MASTER:
                                 item = new ArchimageStaff(charId);
                                 break;
                         }
@@ -147,16 +148,16 @@ public class ItemFactoryImpl extends BaseItemFactory {
                     case ARMORGARMENT:
                         switch (lvlOfStrength)
                         {
-                            case 1:
+                            case BEGGINER:
                                 item = new BeginnersMantle(charId);
                                 break;
-                            case 2:
+                            case APPRENTICE:
                                 item = new ApprenticesMantle(charId);
                                 break;
-                            case 3:
+                            case ADEPT:
                                 item = new AdeptsMantle(charId);
                                 break;
-                            case 4:
+                            case MASTER:
                                 item = new ArchimageMantle(charId);
                                 break;
                         }
@@ -169,16 +170,16 @@ public class ItemFactoryImpl extends BaseItemFactory {
                     case HELMET:
                         switch (lvlOfStrength)
                         {
-                            case 1:
+                            case BEGGINER:
                                 item = new ArmorMatesHelmet(charId);
                                 break;
-                            case 2:
+                            case APPRENTICE:
                                 item = new PrenticesHelmet(charId);
                                 break;
-                            case 3:
+                            case ADEPT:
                                 item = new SwordsmansHelmet(charId);
                                 break;
-                            case 4:
+                            case MASTER:
                                 item = new MasterSwordsmanHelmet(charId);
                                 break;
                         }
@@ -186,16 +187,16 @@ public class ItemFactoryImpl extends BaseItemFactory {
                     case WEAPON:
                         switch (lvlOfStrength)
                         {
-                            case 1:
+                            case BEGGINER:
                                 item = new ArmorMatesSaber(charId);
                                 break;
-                            case 2:
+                            case APPRENTICE:
                                 item = new PrenticesSaber(charId);
                                 break;
-                            case 3:
+                            case ADEPT:
                                 item = new SwordsmansSaber(charId);
                                 break;
-                            case 4:
+                            case MASTER:
                                 item = new MasterSwordsmansaber(charId);
                                 break;
                         }
@@ -203,16 +204,16 @@ public class ItemFactoryImpl extends BaseItemFactory {
                     case ARMORGARMENT:
                         switch (lvlOfStrength)
                         {
-                            case 1:
+                            case BEGGINER:
                                 item = new ArmorMatesChainMail(charId);
                                 break;
-                            case 2:
+                            case APPRENTICE:
                                 item = new PrenticesCuirass(charId);
                                 break;
-                            case 3:
+                            case ADEPT:
                                 item = new SwordsmansCuirass(charId);
                                 break;
-                            case 4:
+                            case MASTER:
                                 item = new MasterSwordsmanCuirass(charId);
                                 break;
                         }
@@ -221,6 +222,29 @@ public class ItemFactoryImpl extends BaseItemFactory {
                 break;
         }
         return item;
+    }
+
+
+
+    public  Item createRandomItem(String charId){
+        ClassesCategories classType = ClassesCategories
+                .values()[randomIndex(ClassesCategories.values().length)];
+        Categories itemCategory = Categories
+                .values()[randomIndex(Categories.values().length)];
+        LvlOfItem lvlOfIndex = LvlOfItem.values()[randomIndex(LvlOfItem.values().length)];
+
+        return createItem(classType, itemCategory, lvlOfIndex,charId);
+    }
+
+
+    private int randomIndex(int length){
+        double range = 1 / length;
+        int i = 1;
+        double ods = Math.random();
+        while( i * range < ods){
+            i++;
+        }
+        return i - 1;
     }
 
 

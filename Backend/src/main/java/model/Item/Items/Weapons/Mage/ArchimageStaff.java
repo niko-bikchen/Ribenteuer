@@ -1,5 +1,6 @@
 package model.Item.Items.Weapons.Mage;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -19,7 +20,7 @@ public class ArchimageStaff extends Item {
         this.category = WEAPON;
         this.intelligenceNeeded = 35;
         this.cost = 4500;
-        this.lvlOfStrength = 4;
+        this.lvlOfStrength = LvlOfItem.MASTER;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         this.mechanicsCategoryList.add(ABILITY_DAMAGE);

@@ -1,5 +1,6 @@
 package model.Item.Items.Armors.Warrior;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -18,7 +19,7 @@ public class PrenticesCuirass extends Item {
         this.category = ARMORGARMENT;
         this.strengthNeeded = 30;
         this.cost = 2500;
-        this.lvlOfStrength = 2;
+        this.lvlOfStrength = LvlOfItem.APPRENTICE;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         this.mechanicsCategoryList.add(ARMOR);

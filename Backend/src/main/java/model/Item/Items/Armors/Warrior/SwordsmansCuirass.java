@@ -1,5 +1,6 @@
 package model.Item.Items.Armors.Warrior;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -18,7 +19,7 @@ public class SwordsmansCuirass extends Item {
         this.category = ARMORGARMENT;
         this.strengthNeeded = 35;
         this.cost = 3500;
-        this.lvlOfStrength = 3;
+        this.lvlOfStrength = LvlOfItem.ADEPT;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         this.mechanicsCategoryList.add(ARMOR);

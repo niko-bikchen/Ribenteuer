@@ -1,5 +1,6 @@
 package model.Item.Items.Helmets.Mage;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -18,7 +19,7 @@ public class AdeptsHood extends Item {
         this.category = HELMET;
         this.intelligenceNeeded = 30;
         this.cost = 3000;
-        this.lvlOfStrength = 3;
+        this.lvlOfStrength = LvlOfItem.ADEPT;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         this.mechanicsCategoryList.add(ABILITY_DAMAGE);

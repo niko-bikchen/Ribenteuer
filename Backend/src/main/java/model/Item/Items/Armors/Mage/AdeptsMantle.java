@@ -1,5 +1,6 @@
 package model.Item.Items.Armors.Mage;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -19,7 +20,7 @@ public class AdeptsMantle extends Item {
         this.category = ARMORGARMENT;
         this.intelligenceNeeded = 35;
         this.cost = 3500;
-        this.lvlOfStrength = 3;
+        this.lvlOfStrength = LvlOfItem.ADEPT;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         mechanicsCategoryList.add(AVOID);

@@ -1,5 +1,6 @@
 package model.Item.Items.Weapons.Mage;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -19,7 +20,7 @@ public class AdeptsStaff extends Item {
         this.category = WEAPON;
         this.intelligenceNeeded = 30;
         this.cost = 3250;
-        this.lvlOfStrength = 3;
+        this.lvlOfStrength = LvlOfItem.ADEPT;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         this.mechanicsCategoryList.add(ABILITY_DAMAGE);

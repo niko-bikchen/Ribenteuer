@@ -1,5 +1,6 @@
 package model.Item.Items.Helmets.Warrior;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -18,7 +19,7 @@ public class SwordsmansHelmet extends Item {
         this.category = HELMET;
         this.strengthNeeded = 30;
         this.cost = 3000;
-        this.lvlOfStrength = 4;
+        this.lvlOfStrength = LvlOfItem.ADEPT;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         this.mechanicsCategoryList.add(ARMOR);

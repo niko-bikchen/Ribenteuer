@@ -1,5 +1,6 @@
 package model.Item.Items.Helmets.Rogue;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -18,7 +19,7 @@ public class BanditsHood extends Item {
         this.category = HELMET;
         this.agilityNeeded = 25;
         this.cost = 2000;
-        this.lvlOfStrength = 2;
+        this.lvlOfStrength = LvlOfItem.APPRENTICE;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         this.mechanicsCategoryList.add(AVOID);

@@ -1,5 +1,6 @@
 package model.Item.Items.Weapons.Warrior;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -18,7 +19,7 @@ public class SwordsmansSaber extends Item {
         this.category = WEAPON;
         this.strengthNeeded = 30;
         this.cost = 3250;
-        this.lvlOfStrength = 3;
+        this.lvlOfStrength = LvlOfItem.ADEPT;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         this.mechanicsCategoryList.add(DAMAGE);

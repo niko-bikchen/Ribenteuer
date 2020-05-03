@@ -1,5 +1,6 @@
 package model.Item.Items.Armors.Rogue;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -19,7 +20,7 @@ public class TweezersArmor extends Item {
         this.category = ARMORGARMENT;
         this.agilityNeeded = 25;
         this.cost = 1500;
-        this.lvlOfStrength = 1;
+        this.lvlOfStrength = LvlOfItem.BEGGINER;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         mechanicsCategoryList.add(AVOID);

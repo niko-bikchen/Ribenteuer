@@ -1,5 +1,6 @@
 package model.Item.Items.Helmets.Rogue;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -18,7 +19,7 @@ public class ShadowMasterHat extends Item {
         this.category = HELMET;
         this.agilityNeeded = 35;
         this.cost = 4000;
-        this.lvlOfStrength = 4;
+        this.lvlOfStrength = LvlOfItem.MASTER;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         this.mechanicsCategoryList.add(AVOID);

@@ -1,5 +1,6 @@
 package model.Item.Items.Armors.Mage;
 
+import model.Item.Categories.LvlOfItem;
 import model.Item.Item;
 import model.Mechanics.MechanicsCategory;
 
@@ -19,7 +20,7 @@ public class ArchimageMantle extends Item {
         this.category = ARMORGARMENT;
         this.intelligenceNeeded = 40;
         this.cost = 5000;
-        this.lvlOfStrength = 4;
+        this.lvlOfStrength = LvlOfItem.MASTER;
 
         this.mechanicsCategoryList = new LinkedList<MechanicsCategory>();
         mechanicsCategoryList.add(AVOID);
