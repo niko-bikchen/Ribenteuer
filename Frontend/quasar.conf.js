@@ -57,7 +57,6 @@ module.exports = function quasarConf() {
         'QFooter',
         'QForm',
         'QInput',
-        'QCard',
         'QTab',
         'QTabs',
         'QTabPanel',
@@ -77,10 +76,15 @@ module.exports = function quasarConf() {
         'QBadge',
         'QTabs',
         'QTab',
-        'QRouteTab'
+        'QRouteTab',
+        'QTooltip',
+        'QDialog',
+        'QCard',
+        'QCardSection',
+        'QCardActions'
       ],
 
-      directives: ['Ripple'],
+      directives: ['Ripple', 'ClosePopup'],
 
       // Quasar plugins
       plugins: ['Notify', 'LoadingBar']

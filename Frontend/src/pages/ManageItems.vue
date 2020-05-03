@@ -33,7 +33,7 @@
                     <q-item-label class="text-grey">Name</q-item-label>
                   </q-item-section>
                   <q-item-section side>
-                    <q-item-label class="text-grey">Quantity</q-item-label>
+                    <q-item-label class="text-grey">Quantity | Equiped</q-item-label>
                   </q-item-section>
                 </q-item>
                 <q-item
@@ -47,7 +47,14 @@
                     <q-item-label caption>{{ item.category }}</q-item-label>
                   </q-item-section>
                   <q-item-section side>
-                    <q-item-label>{{ item.quantity }}</q-item-label>
+                    <q-item-label>
+                      {{ item.quantity }} |
+                      <span v-if="item.equiped !== undefined">{{
+                        item.equiped ? 'Yes' : 'No'
+                      }}</span>
+                      <span v-else-if="item.category === 'Consumable'">Yes</span>
+                      <span v-else>N/A</span>
+                    </q-item-label>
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -96,8 +103,17 @@
               size="lg"
               color="dark"
               class="text-white"
+              @click="equipUnequipItem('unequip')"
             ></q-btn>
-            <q-btn v-else label="Equip" outline color="dark" size="lg" class="text-white"></q-btn>
+            <q-btn
+              v-else
+              label="Equip"
+              outline
+              color="dark"
+              size="lg"
+              class="text-white"
+              @click="equipUnequipItem('equip')"
+            ></q-btn>
           </div>
           <div v-else-if="clickedItem.category === 'Consumable'">
             <div class="q-mb-lg text-h6 text-center absolute-bottom">
@@ -115,9 +131,11 @@
 
 <script>
 import FullHeightColumn from '../components/FullHeightColumn';
+import notifyUtils from '../mixins/notify';
 
 export default {
   name: 'appManageItems',
+  mixins: [notifyUtils],
   components: {
     appFullHeightColumn: FullHeightColumn
   },
@@ -150,6 +168,23 @@ export default {
       Object.entries(stats).forEach(([name, value]) => res.push(`${name.toUpperCase()}: ${value}`));
 
       return res.sort().join(' | ');
+    },
+    equipUnequipItem(action) {
+      this.$store
+        .dispatch(`gameCharacterScope/${action}Item`, {
+          characterId: this.characterData.id,
+          itemId: this.clickedItem.id
+        })
+        .then(response => {
+          if (response.status === 200) {
+            this.notifySuccess(`${response.message}: ${this.clickedItem.name}`);
+          } else {
+            this.notifyError(response.message);
+          }
+        })
+        .catch(error => {
+          this.notifyError(error.message);
+        });
     }
   },
   created() {

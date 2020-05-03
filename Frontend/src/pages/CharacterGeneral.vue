@@ -50,9 +50,12 @@
             @increaseStat="increaseStat"
             @decreaseStat="decreaseStat"
           ></app-character-preview>
+          <div class="q-my-sm text-center" v-if="hasFreePoints" @click="showConfirm = true">
+            <q-btn outline label="Save Changes" size="sm"></q-btn>
+          </div>
           <div>
             <div>
-              <div class="q-mt-sm text-center text-caption">
+              <div class="q-mt-lg text-center text-caption">
                 Health
               </div>
               <q-linear-progress
@@ -115,6 +118,25 @@
         </div>
       </div>
     </div>
+    <q-dialog v-model="showConfirm" persistent>
+      <q-card class="font-tech">
+        <q-card-section class="row items-center">
+          <span class="q-ml-sm">Are you sure you sure ?</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="No" color="dark" class="text-white" v-close-popup />
+          <q-btn
+            label="Yeah"
+            color="dark"
+            class="text-white"
+            outline
+            v-close-popup
+            @click="saveChanges"
+          />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
@@ -138,7 +160,8 @@ export default {
       characterData: {},
       listsHeight: 0,
       showProgress: true,
-      hasFreePoints: false
+      hasFreePoints: false,
+      showConfirm: false
     };
   },
   methods: {
@@ -170,6 +193,23 @@ export default {
         this.$store.commit('gameCharacterScope/DECREASE_STAT', stat);
         this.$store.commit('gameCharacterScope/INCREASE_STAT_POINTS');
       }
+    },
+    saveChanges() {
+      this.$store
+        .dispatch('gameCharacterScope/updateCharacterData', this.characterData)
+        .then(response => {
+          if (response.status === 200) {
+            this.notifySuccess(response.message);
+            this.characterData = this.$store.getters['gameCharacterScope/getCharacterData'];
+            this.beginStats = { ...this.characterData.stats };
+            this.hasFreePoints = this.characterData.freeStatPoints > 0;
+          } else {
+            this.notifyError(response.message);
+          }
+        })
+        .catch(error => {
+          this.notifyError(error.message);
+        });
     }
   },
   created() {
