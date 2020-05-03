@@ -1,6 +1,8 @@
 //developed by Vladyslav Haponenko
-package model.Location;
+package model.Location.LocationImpl;
 
+
+import model.Location.LocationImpl.Location;
 
 import java.util.List;
 

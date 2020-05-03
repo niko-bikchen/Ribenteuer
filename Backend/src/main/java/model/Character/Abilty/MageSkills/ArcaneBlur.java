@@ -1,22 +1,27 @@
 package model.Character.Abilty.MageSkills;
 
 
-import model.Character.Abilty.AbilityImpl;
-import model.Mechanics.AvoidBuff;
+import model.Character.Abilty.Ability;
+import model.Mechanics.MechanicsCategory;
 
-public class ArcaneBlur extends AbilityImpl  {
+import java.util.LinkedList;
 
-    private double avoidMult;
+import static model.Mechanics.MechanicsCategory.AVOID;
+
+public class ArcaneBlur extends Ability {
 
     public ArcaneBlur(){
-        this.lvlOfAbil=0;
+        this.lvlOfAbil=1;
         this.lvl=2;
-        this.avoidMult=0;
+        this.avoidChance = 0.3;
         this.cdTurns=5;
         this.activityTurnsNum=2;
         this.cdDeTurnsLef=0;
         this.acTurnsLeft=0;
         this.active=false;
+
+        this.types = new LinkedList<MechanicsCategory>();
+        types.add(AVOID);
     }
 
     @Override
@@ -27,19 +32,10 @@ public class ArcaneBlur extends AbilityImpl  {
 
     @Override
     public void upAbility() {
-        if(lvlOfAbil==0){
-            avoidMult=0.3;
-        }else{
-            avoidMult+=0.1;
-        }
-
-        lvlOfAbil+=1;
+        avoidChance +=0.1;
+        lvlOfAbil += 1;
     }
 
-    @Override
-    public double multAvoidChance(){
-        return avoidMult;
-    }
 
     @Override
     public String description() {

@@ -14,7 +14,7 @@ public interface CharacterService {
     List<GameCharacter> findAllUsersChars(String id);
 
     //make the Character based on value for it's fields and type
-    void makeCharacter(String type,String ownerId,String name);
+    void makeCharacter(ClassesCategories type, String ownerId, String name);
 
     Optional<GameCharacter> findCharacterById(String id);
 
@@ -23,4 +23,8 @@ public interface CharacterService {
     void deleteAllByOwnerId(String id);
 
     List<Item> takeAllItemsById(String id);
+
+    void updateChar(GameCharacter gChar);
+
+    List<Item> takeAllEquipedItemsById(String id);
 }

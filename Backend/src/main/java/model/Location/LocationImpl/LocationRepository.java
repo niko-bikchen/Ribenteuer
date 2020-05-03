@@ -1,7 +1,7 @@
 //developed by Vladyslav Haponenko
-package model.Location;
+package model.Location.LocationImpl;
 
-import model.Location.Location;
+import model.Location.LocationImpl.Location;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

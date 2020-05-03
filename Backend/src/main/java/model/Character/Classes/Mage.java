@@ -3,6 +3,7 @@ package model.Character.Classes;
 
 import model.Character.Abilty.Ability;
 import model.Character.Abilty.MageSkills.*;
+import model.Character.ClassesCategories;
 import model.Character.GameCharacter;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 public class Mage extends GameCharacter {
 
     public Mage(String ownerId,String name){
+        super();
         this.currentExp=0;
         this.lvl=1;
         this.name=name;
@@ -19,7 +21,9 @@ public class Mage extends GameCharacter {
         this.agility=18;
         this.expNeeded=calculateExpNeeded();
 
-        this.classOfChar = "mage";
+        this.classOfChar = ClassesCategories.MAGE;
+
+        this.portraitId = 3;
 
         abilities=new ArrayList<Ability>();
         abilities.add(new FieryBlizzard());

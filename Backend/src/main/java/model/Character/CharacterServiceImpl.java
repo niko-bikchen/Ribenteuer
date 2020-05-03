@@ -6,8 +6,10 @@ import model.Item.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 //provides interaction with CharacterRepository class
 @Service
@@ -35,9 +37,9 @@ public class CharacterServiceImpl implements CharacterService {
     //
     //adds the character to repository
     //
-    //parameter type expected to be rogue, mage or warrior
+    //parameter type expected to be ROGUE, MAGE or WARRIOR
     @Override
-    public void makeCharacter(String type, String ownerId, String name) {
+    public void makeCharacter(ClassesCategories type, String ownerId, String name) {
         CharacterFactory cf = new CharacterFactory();
 
         GameCharacter gChar = characterRepository.findByNameAndOwnerId(name, ownerId);
@@ -74,5 +76,17 @@ public class CharacterServiceImpl implements CharacterService {
     @Override
     public List<Item> takeAllItemsById(String id) {
         return itemRepository.findByCharId(id);
+    }
+
+    @Override
+    public void updateChar(GameCharacter gChar){
+        characterRepository.save(gChar);
+    }
+
+
+    @Override
+    public List<Item> takeAllEquipedItemsById(String id){
+        List<Item> items = takeAllItemsById(id);
+        return items.stream().filter(item -> item.isEquipped()).collect(Collectors.toList());
     }
 }

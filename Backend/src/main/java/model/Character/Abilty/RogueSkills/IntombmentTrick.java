@@ -1,23 +1,28 @@
 package model.Character.Abilty.RogueSkills;
 
 
-import model.Character.Abilty.AbilityImpl;
-import model.Mechanics.AbilityDamageBuff;
-import model.Mechanics.FinishingOffBuff;
+import model.Character.Abilty.Ability;
+import model.Mechanics.MechanicsCategory;
 
-public class IntombmentTrick extends AbilityImpl  {
+import java.util.LinkedList;
 
-    private double finishingMult;
+import static model.Mechanics.MechanicsCategory.FINISHING_OFF;
+
+public class IntombmentTrick extends Ability {
+
 
     public IntombmentTrick(){
-        this.lvlOfAbil=0;
+        this.lvlOfAbil=1;
         this.lvl=2;
-        this.finishingMult=0;
+        this.finishingOff=0.3;
         this.cdTurns=8;
         this.activityTurnsNum=1;
         this.cdDeTurnsLef=0;
         this.acTurnsLeft=0;
         this.active=false;
+
+        this.types = new LinkedList<MechanicsCategory>();
+        types.add(FINISHING_OFF);
     }
 
     @Override
@@ -27,19 +32,11 @@ public class IntombmentTrick extends AbilityImpl  {
 
     @Override
     public void upAbility() {
-        if(lvlOfAbil==0){
-            finishingMult=0.3;
-        }else{
-            finishingMult+=0.15;
-        }
-
+        finishingOff+=0.15;
         lvlOfAbil+=1;
     }
 
-    @Override
-    public double multFinishingOff(){
-        return finishingMult;
-    }
+
 
     @Override
     public String description() {
