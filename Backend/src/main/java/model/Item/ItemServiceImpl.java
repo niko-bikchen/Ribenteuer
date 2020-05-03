@@ -2,6 +2,7 @@ package model.Item;
 
 import model.Character.ClassesCategories;
 import model.Item.Categories.Categories;
+import model.Item.Categories.LvlOfItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +33,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void createItem(ClassesCategories typeOfChar, Categories typeOfItem,
-                           int lvlOfStrength, String charId) {
+                           LvlOfItem lvlOfStrength, String charId) {
         itemRepository.save(itemFactory.createItem(typeOfChar, typeOfItem, lvlOfStrength, charId));
     }
 
@@ -47,8 +48,8 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void deleteAllByOwnerId(String id) {
-        itemRepository.deleteById(id);
+    public void deleteAllByCharId(String id) {
+        itemRepository.deleteAllByCharId(id);
     }
 
     @Override

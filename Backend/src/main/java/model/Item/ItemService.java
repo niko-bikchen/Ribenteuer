@@ -4,6 +4,7 @@ package model.Item;
 
 import model.Character.ClassesCategories;
 import model.Item.Categories.Categories;
+import model.Item.Categories.LvlOfItem;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,13 +17,13 @@ public interface ItemService {
 
     List<Item> findAllUsersItems(String id);
 
-    void createItem(ClassesCategories typeOfChar, Categories typeOfItem, int lvlOfStrength, String charId);
+    void createItem(ClassesCategories typeOfChar, Categories typeOfItem, LvlOfItem lvlOfStrength, String charId);
 
     void deleteItem(String id);
 
     Optional<Item> getItemById(String id);
 
-    void deleteAllByOwnerId(String id);
+    void deleteAllByCharId(String id);
 
     void saveItem(Item item);
 
