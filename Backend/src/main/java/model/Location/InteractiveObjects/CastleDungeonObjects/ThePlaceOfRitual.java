@@ -1,11 +1,10 @@
 package model.Location.InteractiveObjects.CastleDungeonObjects;
 
-import model.Character.GameCharacter;
 import model.FhightChar.FightCharacter;
-import model.Location.InteractiveObjects.InteractiveObjects;
+import model.Location.InteractiveObjects.InteractiveObject;
 import model.Location.LocationImpl.LocationType;
 
-public class ThePlaceOfRitual extends InteractiveObjects {
+public class ThePlaceOfRitual extends InteractiveObject {
 
     public ThePlaceOfRitual(){
         this.name = "The place of ritual";

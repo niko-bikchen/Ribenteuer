@@ -1,11 +1,10 @@
 package model.Location.InteractiveObjects.ForestObjects;
 
-import model.Character.GameCharacter;
 import model.FhightChar.FightCharacter;
-import model.Location.InteractiveObjects.InteractiveObjects;
+import model.Location.InteractiveObjects.InteractiveObject;
 import model.Location.LocationImpl.LocationType;
 
-public class LawnWithGrass extends InteractiveObjects {
+public class LawnWithGrass extends InteractiveObject {
 
     public LawnWithGrass(){
         this.name = "Lawn with grass";

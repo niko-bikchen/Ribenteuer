@@ -4,7 +4,7 @@ import model.Character.GameCharacter;
 import model.FhightChar.FightCharacter;
 import model.Location.LocationImpl.LocationType;
 
-public abstract class InteractiveObjects {
+public abstract class InteractiveObject {
 
     protected String name;
 

@@ -31,4 +31,8 @@ public abstract class Monster {
     public double makeDamage(){
         return (Math.random() * ((maxDamage - minDamage) + 1)) + minDamage;
     }
+
+    public double expFromMonster(int lvlOfChar){
+        return 40 * 20 * lvlOfChar;
+    }
 }

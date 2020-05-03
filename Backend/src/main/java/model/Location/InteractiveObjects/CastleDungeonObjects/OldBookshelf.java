@@ -1,13 +1,12 @@
 package model.Location.InteractiveObjects.CastleDungeonObjects;
 
-import model.Character.GameCharacter;
 import model.FhightChar.FightCharacter;
-import model.Location.InteractiveObjects.InteractiveObjects;
+import model.Location.InteractiveObjects.InteractiveObject;
 import model.Location.LocationImpl.LocationType;
 
-public class OldBbookshelf extends InteractiveObjects {
+public class OldBookshelf extends InteractiveObject {
 
-    public OldBbookshelf(){
+    public OldBookshelf(){
         this.name = "Old bookshelf";
         this.portraitId = "1";
         this.locationType = LocationType.CASTLEDUNGEON;

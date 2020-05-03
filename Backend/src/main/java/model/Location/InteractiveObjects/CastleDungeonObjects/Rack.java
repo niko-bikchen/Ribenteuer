@@ -1,12 +1,11 @@
 package model.Location.InteractiveObjects.CastleDungeonObjects;
 
-import model.Character.GameCharacter;
 import model.FhightChar.FightCharacter;
 import model.Item.ItemFactoryImpl;
-import model.Location.InteractiveObjects.InteractiveObjects;
+import model.Location.InteractiveObjects.InteractiveObject;
 import model.Location.LocationImpl.LocationType;
 
-public class Rack extends InteractiveObjects {
+public class Rack extends InteractiveObject {
 
     public Rack(){
         this.name = "Rack";

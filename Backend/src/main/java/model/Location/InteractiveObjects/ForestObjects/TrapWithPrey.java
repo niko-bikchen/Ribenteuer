@@ -1,13 +1,10 @@
 package model.Location.InteractiveObjects.ForestObjects;
 
-import model.Character.GameCharacter;
 import model.FhightChar.FightCharacter;
-import model.Item.BaseItemFactory;
-import model.Item.ItemFactoryImpl;
-import model.Location.InteractiveObjects.InteractiveObjects;
+import model.Location.InteractiveObjects.InteractiveObject;
 import model.Location.LocationImpl.LocationType;
 
-public class TrapWithPrey extends InteractiveObjects {
+public class TrapWithPrey extends InteractiveObject {
 
     public TrapWithPrey(){
         this.name = "Trap with prey";

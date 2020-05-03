@@ -1,12 +1,11 @@
 package model.Location.InteractiveObjects.CastleDungeonObjects;
 
-import model.Character.GameCharacter;
 import model.FhightChar.FightCharacter;
 import model.Item.ItemFactoryImpl;
-import model.Location.InteractiveObjects.InteractiveObjects;
+import model.Location.InteractiveObjects.InteractiveObject;
 import model.Location.LocationImpl.LocationType;
 
-public class TheHandleInThePileOfStones extends InteractiveObjects {
+public class TheHandleInThePileOfStones extends InteractiveObject {
 
     public TheHandleInThePileOfStones(){
         this.name = "The handle in the pile of stones";
