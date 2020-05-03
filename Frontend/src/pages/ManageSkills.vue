@@ -58,7 +58,7 @@
               {{ clickedSkill.category }}
             </div>
           </div>
-          <div class="row q-mt-lg">
+          <div class="row q-mt-lg text-light-blue-5">
             <div class="col-6 text-right">Upgrade Cost:</div>
             <div class="col-6 q-pl-lg">{{ clickedSkill.cost }} Skill Points</div>
           </div>
@@ -71,7 +71,22 @@
             </p>
           </div>
           <div class="q-mb-lg text-center absolute-bottom">
-            <q-btn label="Upgrade" outline size="lg" color="dark" class="text-white"></q-btn>
+            <div
+              v-if="characterData.freeSkillPoints < clickedSkill.cost"
+              class="q-mb-sm text-yellow-8"
+            >
+              You have not enough skill points to upgrade this skill
+            </div>
+            <q-btn
+              label="Upgrade"
+              outline
+              size="lg"
+              color="dark"
+              class="text-white"
+              :disable="characterData.freeSkillPoints < clickedSkill.cost"
+              @click="showConfirm = true"
+            >
+            </q-btn>
           </div>
         </div>
         <div v-else>
@@ -79,14 +94,35 @@
         </div>
       </div>
     </div>
+    <q-dialog v-model="showConfirm" persistent>
+      <q-card class="font-tech">
+        <q-card-section class="row items-center">
+          <span class="q-ml-sm">Are you sure you sure ?</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="No" color="dark" class="text-white" v-close-popup />
+          <q-btn
+            label="Yeah"
+            color="dark"
+            class="text-white"
+            outline
+            v-close-popup
+            @click="upgradeSkill"
+          />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 
 <script>
 import FullHeightColumn from '../components/FullHeightColumn';
+import notifyUtils from '../mixins/notify';
 
 export default {
   name: 'appManageSkills',
+  mixins: [notifyUtils],
   components: {
     appFullHeightColumn: FullHeightColumn
   },
@@ -95,7 +131,8 @@ export default {
       characterData: {},
       columnsHeight: 0,
       currentTab: 'All',
-      clickedSkill: {}
+      clickedSkill: {},
+      showConfirm: false
     };
   },
   methods: {
@@ -111,6 +148,27 @@ export default {
     },
     showSkill(skill) {
       this.clickedSkill = skill;
+    },
+    upgradeSkill() {
+      this.$store
+        .dispatch('gameCharacterScope/updateCharacterSkill', {
+          characterId: this.characterData.id,
+          skillData: this.clickedSkill
+        })
+        .then(response => {
+          if (response.status === 200) {
+            this.notifySuccess(response.message);
+            this.characterData.skills = this.$store.getters[
+              'gameCharacterScope/getCharacterData'
+            ].skills;
+            this.clickedSkill = response.data.skillData;
+          } else {
+            this.notifyError(response.message);
+          }
+        })
+        .catch(error => {
+          this.notifyError(error.message);
+        });
     }
   },
   created() {

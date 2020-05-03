@@ -7,11 +7,15 @@
             Ribenteuer
           </div>
         </q-toolbar-title>
-        <div class="text-weight-bolder text-yellow-8 absolute-center">
+        <div class="text-weight-bolder absolute-center">
           <div style="display: inline-block">
-            Stats Points: {{ freeStatPoints }}
+            <span :class="{ 'text-light-blue-5': freeStatPoints > 0 }">
+              Stats Points: {{ freeStatPoints }}
+            </span>
             <br />
-            Skill Points: {{ freeSkillPoints }}
+            <span :class="{ 'text-light-blue-5': freeSkillPoints > 0 }">
+              Skill Points: {{ freeSkillPoints }}
+            </span>
           </div>
         </div>
       </q-toolbar>

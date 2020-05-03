@@ -61,3 +61,39 @@ export function updateCharacterData({ commit }, characterData) {
     }
   });
 }
+
+export function updateCharacterSkill({ commit }, { characterId, skillData }) {
+  return makeRequest(axios.put(`/api/user/characters/${characterId}/skills/`, skillData), {
+    requestId: 'update-skill',
+    successStatus: 200,
+    successMessage: 'Successfully updated skill',
+    errorMessage: 'Failed to update skill',
+    storeRelatedAction(response) {
+      commit('UPDATE_SKILL', { skillData: response.data.skillData, oldSkillName: skillData.name });
+    }
+  });
+}
+
+export function equipItem({ commit }, { characterId, itemId }) {
+  return makeRequest(axios.put(`/api/user/characters/${characterId}/items/equip/${itemId}`), {
+    requestId: 'equip-item',
+    successStatus: 200,
+    successMessage: 'Successfully equipped item',
+    errorMessage: 'Failed to equip item',
+    storeRelatedAction() {
+      commit('EQUIP_ITEM', itemId);
+    }
+  });
+}
+
+export function unequipItem({ commit }, { characterId, itemId }) {
+  return makeRequest(axios.put(`/api/user/characters/${characterId}/items/unequip/${itemId}`), {
+    requestId: 'unequip-item',
+    successStatus: 200,
+    successMessage: 'Successfully unequipped item',
+    errorMessage: 'Failed to unequip item',
+    storeRelatedAction() {
+      commit('UNEQUIP_ITEM', itemId);
+    }
+  });
+}

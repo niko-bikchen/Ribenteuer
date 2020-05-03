@@ -75,9 +75,6 @@
           ></q-btn>
         </div>
       </div>
-      <div class="q-my-sm text-center" v-if="showStatsButtons">
-        <q-btn outline label="Save Changes" size="sm"></q-btn>
-      </div>
     </div>
   </div>
   <div v-else class="font-tech text-center text-h5 q-mt-xl">
