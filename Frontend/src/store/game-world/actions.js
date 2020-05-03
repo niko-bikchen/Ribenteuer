@@ -49,3 +49,15 @@ export function fetchCharacterClasses({ commit }) {
     }
   });
 }
+
+export function fetchLocations({ commit }) {
+  return makeRequest(axios.get('/api/game/locations'), {
+    requestId: 'fetch-classes',
+    successStatus: 200,
+    successMessage: 'Successfully fetched locations from the server',
+    errorMessage: 'Failed to fetch locations from the server.',
+    storeRelatedAction(response) {
+      commit('SET_LOCATIONS', response.data.locationsData);
+    }
+  });
+}

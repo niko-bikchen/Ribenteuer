@@ -1,3 +1,8 @@
+export function CLEAR_DATA(state) {
+  state.characterData = {};
+  state.characterInGame = false;
+}
+
 export function SET_CHARACTER_DATA(state, characterData) {
   state.characterData = { ...characterData };
 }

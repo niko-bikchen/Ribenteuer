@@ -85,6 +85,41 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: '/game',
+    component: () => import('layouts/Game.vue'),
+    beforeEnter: (to, from, next) => {
+      if (!store.getters['userScope/getAuthenticationStatus']) {
+        next('/');
+      } else {
+        next();
+      }
+    },
+    children: [
+      {
+        path: '',
+        component: () => import('pages/LocationsList'),
+        beforeEnter: (to, from, next) => {
+          if (!store.getters['userScope/getAuthenticationStatus']) {
+            next('/');
+          } else {
+            next();
+          }
+        }
+      },
+      {
+        path: 'dungeon',
+        component: () => import('pages/Dungeon'),
+        beforeEnter: (to, from, next) => {
+          if (!store.getters['userScope/getAuthenticationStatus']) {
+            next('/');
+          } else {
+            next();
+          }
+        }
+      }
+    ]
   }
 ];
 

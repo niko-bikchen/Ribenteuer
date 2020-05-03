@@ -5,7 +5,7 @@ const notifyUtils = {
     };
   },
   methods: {
-    notifySuccess(message, timeout = 2500) {
+    notifySuccess(message, timeout = 1500) {
       this.$q.notify({
         color: 'green-5',
         textColor: 'white',
@@ -16,7 +16,7 @@ const notifyUtils = {
         timeout
       });
     },
-    notifyError(message, timeout = 2500) {
+    notifyError(message, timeout = 1500) {
       this.$q.notify({
         color: 'red-5',
         textColor: 'white',

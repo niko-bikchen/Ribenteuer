@@ -76,6 +76,8 @@ export function signOut({ commit }) {
     errorMessage: 'Failed to log out',
     storeRelatedAction() {
       commit('CLEAR_DATA');
+      commit('gameCharacterScope/CLEAR_DATA', { root: true });
+      commit('gameWorldScope/CLEAR_DATA', { root: true });
       axios.defaults.headers.common.Authorization = '';
     }
   });

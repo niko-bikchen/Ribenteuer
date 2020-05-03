@@ -5,3 +5,7 @@ export function getCharacters(state) {
 export function getAuthenticationStatus(state) {
   return state.isAuthenticated;
 }
+
+export function getUserData(state) {
+  return state.userData;
+}
