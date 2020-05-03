@@ -39,7 +39,10 @@
                   @click="showSkill(skill)"
                 >
                   <q-item-section>
-                    <q-item-label>{{ skill.name }}</q-item-label>
+                    <q-item-label>
+                      {{ skill.name.charAt(0).toUpperCase() + skill.name.substring(1) }}. Level
+                      {{ skill.level }}
+                    </q-item-label>
                     <q-item-label caption>{{ skill.category }}</q-item-label>
                   </q-item-section>
                 </q-item>
@@ -52,19 +55,26 @@
         <div class="q-pt-lg q-px-md" v-if="clickedSkill.name !== undefined">
           <div class="text-center">
             <div class="text-h4">
-              {{ clickedSkill.name }}
+              {{ clickedSkill.name.charAt(0).toUpperCase() + clickedSkill.name.substring(1) }}.
+              Level {{ clickedSkill.level }}
             </div>
             <div class="text-subtitle2">
               {{ clickedSkill.category }}
             </div>
           </div>
-          <div class="row q-mt-lg text-light-blue-5">
+          <div class="q-mt-sm text-center">
+            <q-img
+              :src="`statics/skills/${clickedSkill.name.split(' ').join('_')}.png`"
+              style="width: 10%; height: auto; border: 3px double white"
+            ></q-img>
+          </div>
+          <div class="row q-mt-md text-light-blue-5">
             <div class="col-6 text-right">Upgrade Cost:</div>
             <div class="col-6 q-pl-lg">{{ clickedSkill.cost }} Skill Points</div>
           </div>
-          <div class="q-mt-lg">
-            <div class="text-caption q-mb-xs">
-              Description
+          <div class="q-mt-xl">
+            <div class="text-weight-bolder q-mb-xs">
+              Description:
             </div>
             <p>
               {{ clickedSkill.description }}
@@ -80,9 +90,9 @@
             <q-btn
               label="Upgrade"
               outline
-              size="lg"
               color="dark"
               class="text-white"
+              :loading="ajaxActive"
               :disable="characterData.freeSkillPoints < clickedSkill.cost"
               @click="showConfirm = true"
             >
@@ -95,7 +105,7 @@
       </div>
     </div>
     <q-dialog v-model="showConfirm" persistent>
-      <q-card class="font-tech">
+      <q-card class="q-pa-sm font-tech b-a-w">
         <q-card-section class="row items-center">
           <span class="q-ml-sm">Are you sure you sure ?</span>
         </q-card-section>
@@ -132,7 +142,8 @@ export default {
       columnsHeight: 0,
       currentTab: 'All',
       clickedSkill: {},
-      showConfirm: false
+      showConfirm: false,
+      ajaxActive: false
     };
   },
   methods: {
@@ -150,12 +161,14 @@ export default {
       this.clickedSkill = skill;
     },
     upgradeSkill() {
+      this.ajaxActive = true;
       this.$store
         .dispatch('gameCharacterScope/updateCharacterSkill', {
           characterId: this.characterData.id,
           skillData: this.clickedSkill
         })
         .then(response => {
+          this.ajaxActive = false;
           if (response.status === 200) {
             this.notifySuccess(response.message);
             this.characterData.skills = this.$store.getters[
@@ -167,6 +180,7 @@ export default {
           }
         })
         .catch(error => {
+          this.ajaxActive = false;
           this.notifyError(error.message);
         });
     }

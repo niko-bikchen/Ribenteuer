@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: 'appCharacterDashboard',
+  name: 'appCharacterDashboardLayout',
   computed: {
     freeStatPoints() {
       return this.$store.getters['gameCharacterScope/getCharacterData'].freeStatPoints;

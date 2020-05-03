@@ -6,7 +6,10 @@
     <div v-for="(item, number) in itemsList" :key="`${item.id}${item.ownerId}`">
       <q-item>
         <q-item-section>
-          <q-item-label>{{ number + 1 }}. {{ item.name }}</q-item-label>
+          <q-item-label>
+            {{ number + 1 }}. {{ item.name.charAt(0).toUpperCase() + item.name.substring(1)
+            }}<span v-if="item.level">. Level {{ item.level }}</span>
+          </q-item-label>
           <q-item-label caption>{{ item.description }}</q-item-label>
           <q-item-label caption v-if="item.stats">
             {{ itemStats(item) }}

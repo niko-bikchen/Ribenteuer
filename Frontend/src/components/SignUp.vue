@@ -2,8 +2,8 @@
   <q-form class="q-gutter-sm" @submit="onSubmit">
     <q-input
       v-model="user.nickname"
-      :rules="validation.nickname"
       :readonly="ajaxActive"
+      :rules="validation.nickname"
       type="text"
       color="white"
       label="Nickname"
@@ -66,7 +66,7 @@ export default {
   methods: {
     onSubmit() {
       const userData = {
-        login: this.nickname,
+        nickname: this.nickname,
         email: this.userEmail,
         password: this.userPassword,
         activeRole: 'ROLE_USER'

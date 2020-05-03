@@ -16,11 +16,20 @@
           <app-character-preview :character="currentCharacter"></app-character-preview>
         </div>
         <div v-if="currentCharacter.id" class="text-center">
-          <q-btn label="Play" class="text-white q-mr-md" size="lg" outline> </q-btn>
+          <q-btn
+            label="Play"
+            class="text-white q-mr-md"
+            size="lg"
+            @click="enterTheGame"
+            :loading="ajaxActive"
+            outline
+          >
+          </q-btn>
           <q-btn
             label="Edit"
             class="text-white"
             size="lg"
+            :disable="ajaxActive"
             @click="$router.push(`/user/character/${currentCharacter.id}`)"
             outline
           ></q-btn>
@@ -47,7 +56,8 @@ export default {
       characters: [],
       currentCharacter: {},
       charactersListHeight: 0,
-      showProgress: true
+      showProgress: true,
+      ajaxActive: false
     };
   },
   methods: {
@@ -56,6 +66,23 @@ export default {
     },
     createNewCharacter() {
       this.$router.push('character-creation');
+    },
+    enterTheGame() {
+      this.ajaxActive = true;
+      this.$store
+        .dispatch('gameCharacterScope/fetchCharacterData', this.currentCharacter.id)
+        .then(response => {
+          this.ajaxActive = false;
+          if (response.status === 200) {
+            this.$router.push('/game');
+          } else {
+            this.notifyError(response.message);
+          }
+        })
+        .catch(error => {
+          this.ajaxActive = false;
+          this.notifyError(error.message);
+        });
     }
   },
   created() {

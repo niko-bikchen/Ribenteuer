@@ -13,4 +13,5 @@ export function SET_USER_CHARACTERS(state, userCharacters) {
 export function CLEAR_DATA(state) {
   state.isAuthenticated = false;
   state.userData = {};
+  state.userCharacters = [];
 }

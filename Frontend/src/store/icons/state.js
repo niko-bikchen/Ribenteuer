@@ -10,7 +10,9 @@ import {
   laPenNibSolid,
   laIdCard,
   laPlusSolid,
-  laMinusSolid
+  laMinusSolid,
+  laDoorOpenSolid,
+  laBoxesSolid
 } from '@quasar/extras/line-awesome';
 
 export default function() {
@@ -27,7 +29,9 @@ export default function() {
       penNibSolid: laPenNibSolid,
       idCard: laIdCard,
       plus: laPlusSolid,
-      minus: laMinusSolid
+      minus: laMinusSolid,
+      doorOpen: laDoorOpenSolid,
+      boxes: laBoxesSolid
     }
   };
 }
