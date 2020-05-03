@@ -23,6 +23,9 @@ public class StoneArmor extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(ARMOR);
+
+        description = "Over 3 rounds, the player receives an additional 30 \\ 45" +
+                " \\ 60% defense against enemy attacks. Cooldown — 7 rounds";
     }
 
     @Override
@@ -37,8 +40,4 @@ public class StoneArmor extends Ability {
         lvlOfAbil += 1;
     }
 
-    @Override
-    public String description() {
-        return null;
-    }
 }

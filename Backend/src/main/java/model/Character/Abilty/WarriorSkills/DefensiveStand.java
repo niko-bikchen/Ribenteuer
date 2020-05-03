@@ -22,6 +22,10 @@ public class DefensiveStand extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(ARMOR);
+
+        description = "Over 3 rounds, the player receives an" +
+                " additional 20 \\ 30 \\ 40% defense" +
+                " against enemy attacks. Cooldown — 7 rounds";
     }
 
     @Override
@@ -36,9 +40,6 @@ public class DefensiveStand extends Ability {
         lvlOfAbil+=1;
     }
 
-    @Override
-    public String description() {
-        return null;
-    }
+
 
 }

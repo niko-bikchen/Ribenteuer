@@ -42,6 +42,8 @@ public abstract class Ability implements AbilityDamageBuff, AvoidBuff, Vampirism
 
     protected double damageTaken = 1;
 
+    protected String description;
+
 
 
 
@@ -111,10 +113,6 @@ public abstract class Ability implements AbilityDamageBuff, AvoidBuff, Vampirism
     public boolean activatable(){
         return !isActive() &&  (cdDeTurnsLef == 0);
     }
-
-
-    public abstract String description();
-
 
 
     // at the end of every turn this method should be called

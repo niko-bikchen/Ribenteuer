@@ -23,6 +23,11 @@ public class CunningAttack extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(ABILITY_DAMAGE);
+
+        description = "The player deals 60/70/80%" +
+                " damage from his ability damage and" +
+                " reduces next enemy damage by 15/25/35%." +
+                "Cooldown — 6 rounds";
     }
 
     @Override
@@ -39,9 +44,4 @@ public class CunningAttack extends Ability {
     }
 
 
-
-    @Override
-    public String description() {
-        return null;
-    }
 }

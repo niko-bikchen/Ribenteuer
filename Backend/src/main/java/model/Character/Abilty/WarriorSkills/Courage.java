@@ -22,6 +22,9 @@ public class Courage extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(HEAL);
+
+        description = "The player recovers 25 \\ 50 \\ 75%" +
+                " of his lost health. Cooldown — 15 rounds";
     }
 
     @Override
@@ -36,10 +39,5 @@ public class Courage extends Ability {
         lvlOfAbil+=1;
     }
 
-
-    @Override
-    public String description() {
-        return null;
-    }
 
 }

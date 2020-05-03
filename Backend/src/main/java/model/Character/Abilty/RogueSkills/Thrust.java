@@ -24,6 +24,10 @@ public class Thrust extends Ability {
         this.types = new LinkedList<MechanicsCategory>();
         types.add(ABILITY_DAMAGE);
         types.add(AVOID);
+
+        description = "The player deals 125/150/175% damage" +
+                " from his ability damage and increases enemy" +
+                " miss chance by 10\\15\\20%. Cooldown — 5 rounds";
     }
 
     @Override
@@ -38,8 +42,4 @@ public class Thrust extends Ability {
         lvlOfAbil += 1;
     }
 
-    @Override
-    public String description() {
-        return null;
-    }
 }

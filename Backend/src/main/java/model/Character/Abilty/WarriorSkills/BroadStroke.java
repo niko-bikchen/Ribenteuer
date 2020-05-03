@@ -22,6 +22,9 @@ public class BroadStroke extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(ABILITY_DAMAGE);
+
+        description = "The player deals 150 \\ 165 \\ 180%" +
+                " damage from his ability damage. Cooldown — 6 rounds";
     }
 
     @Override
@@ -35,9 +38,5 @@ public class BroadStroke extends Ability {
         lvlOfAbil+=1;
     }
 
-    @Override
-    public String description() {
-        return null;
-    }
 
 }

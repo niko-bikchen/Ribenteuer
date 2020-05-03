@@ -22,6 +22,10 @@ public class MagicalVampirism extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(VAMPIRISM);
+
+        description = "The player restores to himself 60 \\ 70 \\" +
+                " 80% of the amount of health points lost by" +
+                " the enemy. Cooldown — 10 rounds";
     }
 
     @Override
@@ -36,9 +40,4 @@ public class MagicalVampirism extends Ability {
         lvlOfAbil += 1;
     }
 
-
-    @Override
-    public String description() {
-        return null;
-    }
 }

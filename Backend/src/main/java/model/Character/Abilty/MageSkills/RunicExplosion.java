@@ -23,6 +23,9 @@ public class RunicExplosion extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(ABILITY_DAMAGE);
+
+        description = "The player deals 115 \\ 130 \\" +
+                " 145% damage from his ability damage. Cooldown — 6 rounds";
     }
 
     @Override
@@ -38,10 +41,4 @@ public class RunicExplosion extends Ability {
 
     }
 
-
-
-    @Override
-    public String description() {
-        return null;
-    }
 }

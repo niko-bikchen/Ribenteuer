@@ -23,6 +23,10 @@ public class Anger extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(ABILITY_DAMAGE);
+
+        description = "Over 3 rounds, the player’s normal" +
+                " attacks deal 15 \\ 30 \\ 45% more damage." +
+                " Cooldown — 12 rounds";
     }
 
 
@@ -38,9 +42,4 @@ public class Anger extends Ability {
     }
 
 
-
-    @Override
-    public String description() {
-        return null;
-    }
 }

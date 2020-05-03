@@ -24,6 +24,11 @@ public class DestructiveStrike extends Ability {
         this.types = new LinkedList<MechanicsCategory>();
         types.add(ABILITY_DAMAGE);
         types.add(ARMOR);
+
+        description = "The player deals 110/130/150%" +
+                " damage from his ability damage and reduces" +
+                " enemy damage by 15/25/35% for 3 rounds." +
+                " Cooldown — 5 rounds.\n";
     }
 
     @Override
@@ -39,9 +44,5 @@ public class DestructiveStrike extends Ability {
     }
 
 
-    @Override
-    public String description() {
-        return null ;
-    }
 
 }
