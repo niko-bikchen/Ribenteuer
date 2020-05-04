@@ -37,7 +37,7 @@
       square
       lazy-rules
     >
-      <template v-slot:append=""> <q-icon :name="icons.asteriskSolid"> </q-icon></template>
+      <template v-slot> <q-icon :name="icons.asteriskSolid"> </q-icon></template>
     </q-input>
     <div class="text-center">
       <q-btn :loading="ajaxActive" type="submit" color="white" size="md" outline>Submit</q-btn>
@@ -66,8 +66,8 @@ export default {
   methods: {
     onSubmit() {
       const userData = {
-        nickname: this.nickname,
-        email: this.userEmail,
+        login: this.nickname,
+        mail: this.userEmail,
         password: this.userPassword,
         activeRole: 'ROLE_USER'
       };

@@ -58,24 +58,6 @@
             </div>
             <div>
               <div>
-                <div class="q-mt-lg text-center text-caption">
-                  Health
-                </div>
-                <q-linear-progress
-                  size="25px"
-                  :value="characterData.currentHealth / characterData.maxHealth"
-                  color="red"
-                >
-                  <div class="absolute-full flex flex-center">
-                    <q-badge
-                      color="black"
-                      text-color="white"
-                      :label="`${characterData.currentHealth} / ${characterData.maxHealth}`"
-                    ></q-badge>
-                  </div>
-                </q-linear-progress>
-              </div>
-              <div>
                 <div class="q-mt-sm text-center text-caption">
                   Level progress
                 </div>

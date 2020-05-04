@@ -45,7 +45,11 @@ export function fetchCharacterData({ commit }, characterId) {
     successMessage: 'Successfully fetched character',
     errorMessage: 'Failed to fetch character',
     storeRelatedAction(response) {
-      commit('SET_CHARACTER_DATA', response.data.characterData);
+      const { characterData } = response.data;
+      characterData.class = characterData.characterClass;
+      delete characterData.characterClass;
+
+      commit('SET_CHARACTER_DATA', characterData);
     }
   });
 }
@@ -57,7 +61,11 @@ export function updateCharacterData({ commit }, characterData) {
     successMessage: 'Successfully updated character',
     errorMessage: 'Failed to update character',
     storeRelatedAction(response) {
-      commit('SET_CHARACTER_DATA', response.data.characterData);
+      const character = response.data.characterData;
+      character.class = character.characterClass;
+      delete character.characterClass;
+
+      commit('SET_CHARACTER_DATA', character);
     }
   });
 }

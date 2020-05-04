@@ -59,7 +59,28 @@ export default {
   name: 'appLocationsList',
   data() {
     return {
-      locations: [],
+      locations: [
+        {
+          name: 'Dungeon',
+          description:
+            'In the dungeons of this castle there was no longer any living soul, and only the undead prowled in corridors. But among these ruins one can find wealth abandoned by others.'
+        },
+        {
+          name: 'Tavern',
+          description:
+            'This tavern always has a lively atmosphere. Often adventurers gather here to discuss the latest news and rumors.'
+        },
+        {
+          name: 'Shop',
+          description:
+            'On the market square, everyone can find for themselves what interests him, or sell something found during his adventures.'
+        },
+        {
+          name: 'Forest',
+          description:
+            'In the shadow of this forest, any adventurer can find his moment for courage. But he should beware of dangers not only from wild animals, but also from forest robbers.'
+        }
+      ],
       characterData: {},
       currentLocation: {}
     };
@@ -67,23 +88,9 @@ export default {
   components: {
     appFullHeightColumn: FullHeightColumn
   },
-  methods: {
-    enterTheDungeon() {}
-  },
+  methods: {},
   created() {
-    this.$store
-      .dispatch('gameWorldScope/fetchLocations')
-      .then(response => {
-        if (response.status === 200) {
-          this.locations = this.$store.getters['gameWorldScope/getLocations'];
-          this.characterData = this.$store.getters['gameCharacterScope/getCharacterData'];
-        } else {
-          this.notifyError(response.message);
-        }
-      })
-      .catch(error => {
-        this.notifyError(error.message);
-      });
+    this.characterData = this.$store.getters['gameCharacterScope/getCharacterData'];
   }
 };
 </script>

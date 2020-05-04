@@ -12,10 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -29,6 +26,7 @@ public class UserRestController {
 
     private final CharacterService characterService;
 
+    @ResponseBody
     @GetMapping("/characters")
     public ResponseEntity<UserCharactersDto> getAllUserCharacters(HttpServletRequest request) {
         User currentUser = requestHelper.getCurrentUser(request);
@@ -36,6 +34,7 @@ public class UserRestController {
         return ResponseEntity.status(HttpStatus.OK).body(UserCharactersDto.of(characters));
     }
 
+    @ResponseBody
     @PostMapping("/characters")
     public ResponseEntity<UserCharactersDto> createNewCharacter(@RequestBody NewCharacterDto newCharacter, HttpServletRequest request) {
         User currentUser = requestHelper.getCurrentUser(request);
@@ -48,5 +47,26 @@ public class UserRestController {
 
         List<GameCharacter> characters = characterService.findAllUsersChars(currentUser.getId());
         return ResponseEntity.status(HttpStatus.OK).body(UserCharactersDto.of(characters));
+    }
+
+    @DeleteMapping("/characters/{characterId}")
+    public ResponseEntity<UserCharactersDto> deleteCharacter(@PathVariable String characterId, HttpServletRequest request) {
+        User currentUser = requestHelper.getCurrentUser(request);
+        characterService.deleteCharacter(characterId);
+
+        List<GameCharacter> characters = characterService.findAllUsersChars(currentUser.getId());
+        return ResponseEntity.status(HttpStatus.OK).body(UserCharactersDto.of(characters));
+    }
+
+    @GetMapping("/characters/{characterId}")
+    public ResponseEntity<GameCharacter> getCharacter(@PathVariable String characterId, HttpServletRequest request) {
+        return ResponseEntity.status(HttpStatus.OK).body(characterService.findCharacterById(characterId).get());
+    }
+
+    @ResponseBody
+    @PutMapping("/characters/{characterId}")
+    public ResponseEntity<GameCharacter> updateCharacter(@PathVariable String characterId, @RequestBody GameCharacter character, HttpServletRequest request) {
+        characterService.updateChar(character);
+        return ResponseEntity.status(HttpStatus.OK).body(characterService.findCharacterById(characterId).get());
     }
 }

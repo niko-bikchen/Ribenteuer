@@ -1,13 +1,13 @@
 <template>
   <q-layout view="hHh LpR fFf">
-    <q-header class="bg-black bb-w font-tech">
+    <q-header class="bg-black bb-w font-tech q-py-xs">
       <q-toolbar>
         <q-toolbar-title>
           <div class="text-h4 font-bitmgothic q-mb-sm q-mt-md">
             Ribenteuer
           </div>
         </q-toolbar-title>
-        <div class="text-weight-bolder absolute-center">
+        <div class="text-weight-bolder absolute-center text-center">
           <div style="display: inline-block">
             <span :class="{ 'text-light-blue-5': freeStatPoints > 0 }">
               Stats Points: {{ freeStatPoints }}
@@ -16,6 +16,8 @@
             <span :class="{ 'text-light-blue-5': freeSkillPoints > 0 }">
               Skill Points: {{ freeSkillPoints }}
             </span>
+            <br />
+            <span> Gold: {{ characterGold }} </span>
           </div>
         </div>
       </q-toolbar>
@@ -45,6 +47,9 @@ export default {
     },
     characterName() {
       return this.$store.getters['gameCharacterScope/getCharacterData'].name;
+    },
+    characterGold() {
+      return this.$store.getters['gameCharacterScope/getCharacterData'].gold;
     }
   }
 };

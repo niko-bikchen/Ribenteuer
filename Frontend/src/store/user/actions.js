@@ -90,7 +90,13 @@ export function fetchCharacters({ commit }) {
     successMessage: 'Successfully fetched user characters',
     errorMessage: 'Failed to fetch user characters',
     storeRelatedAction(response) {
-      commit('SET_USER_CHARACTERS', response.data.userCharacters);
+      const charactersData = response.data.userCharacters;
+      for (let i = 0; i < charactersData.length; i += 1) {
+        charactersData[i].class = charactersData[i].characterClass;
+        delete charactersData[i].characterClass;
+      }
+
+      commit('SET_USER_CHARACTERS', charactersData);
     }
   });
 }
@@ -102,7 +108,13 @@ export function createCharacter({ commit }, characterData) {
     successMessage: 'Successfully created new character',
     errorMessage: 'Failed to create new character',
     storeRelatedAction(response) {
-      commit('SET_USER_CHARACTERS', response.data.userCharacters);
+      const charactersData = response.data.userCharacters;
+      for (let i = 0; i < charactersData.length; i += 1) {
+        charactersData[i].class = charactersData[i].characterClass;
+        delete charactersData[i].characterClass;
+      }
+
+      commit('SET_USER_CHARACTERS', charactersData);
     }
   });
 }
@@ -114,7 +126,13 @@ export function deleteCharacter({ commit }, characterId) {
     successMessage: 'Successfully deleted character',
     errorMessage: 'Failed to delete the character',
     storeRelatedAction(response) {
-      commit('SET_USER_CHARACTERS', response.data.userCharacters);
+      const charactersData = response.data.userCharacters;
+      for (let i = 0; i < charactersData.length; i += 1) {
+        charactersData[i].class = charactersData[i].characterClass;
+        delete charactersData[i].characterClass;
+      }
+
+      commit('SET_USER_CHARACTERS', charactersData);
     }
   });
 }

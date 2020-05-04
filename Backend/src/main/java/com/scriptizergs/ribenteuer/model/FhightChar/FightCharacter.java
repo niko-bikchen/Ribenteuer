@@ -93,7 +93,7 @@ public class FightCharacter {
 
     private double collectAvoidChance(){
         double avoidChance = 0;
-        for(Ability ability : currentChar.getAbilities()){
+        for(Ability ability : currentChar.getSkills()){
             avoidChance += (ability.isActive() ? ability.multAvoidChance() : 0);
         }
         for(Item item : characterService.takeAllEquipedItemsById(currentChar.getId())){
@@ -104,7 +104,7 @@ public class FightCharacter {
 
     private double collectAbilityDamageBuff(){
         double abilityDamage = 0;
-        for(Ability ability : currentChar.getAbilities()){
+        for(Ability ability : currentChar.getSkills()){
             abilityDamage += (ability.isActive() ? ability.multAbilityDamage() : 0);
         }
         for(Item item : characterService.takeAllEquipedItemsById(currentChar.getId())){
@@ -123,7 +123,7 @@ public class FightCharacter {
 
     private double collectHealBuff(){
         double heal = 0;
-        for(Ability ability : currentChar.getAbilities()){
+        for(Ability ability : currentChar.getSkills()){
             heal += (ability.isActive() ? ability.multHeal() : 0);
         }
         for(Item item : characterService.takeAllEquipedItemsById(currentChar.getId())){
@@ -134,7 +134,7 @@ public class FightCharacter {
 
     private double collectArmor(){
         double armor = 1;
-        for(Ability ability : currentChar.getAbilities()){
+        for(Ability ability : currentChar.getSkills()){
             armor -= (ability.isActive() ? ability.multDamageTaken() : 0);
         }
         for(Item item : characterService.takeAllEquipedItemsById(currentChar.getId())){
@@ -145,7 +145,7 @@ public class FightCharacter {
 
     private double collectVampirism(){
         double vampirism = 0;
-        for(Ability ability : currentChar.getAbilities()){
+        for(Ability ability : currentChar.getSkills()){
             vampirism += (ability.isActive() ? ability.multVampirism() : 0);
         }
         for(Item item : characterService.takeAllEquipedItemsById(currentChar.getId())){
@@ -156,7 +156,7 @@ public class FightCharacter {
 
     private double collectFinishingOffBuff(){
         double finishingOff = 0;
-        for(Ability ability : currentChar.getAbilities()){
+        for(Ability ability : currentChar.getSkills()){
             finishingOff += (ability.isActive() ? ability.multFinishingOff() : 0);
         }
         for(Item item : characterService.takeAllEquipedItemsById(currentChar.getId())){

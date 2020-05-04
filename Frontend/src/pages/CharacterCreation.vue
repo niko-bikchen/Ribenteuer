@@ -347,7 +347,7 @@ export default {
           level: this.newCharacterData.level,
           portraitId: this.newCharacterData.portraitId,
           stats: this.newCharacterData.stats,
-          class: this.newCharacterData.class
+          characterClass: this.newCharacterData.class
         })
         .then(response => {
           this.ajaxActive = false;
@@ -365,11 +365,11 @@ export default {
     },
     statToString(stat) {
       switch (stat) {
-        case 'str':
+        case 'strength':
           return 'Strength';
-        case 'dex':
+        case 'agility':
           return 'Dexterity';
-        case 'int':
+        case 'intelligence':
           return 'Intelligence';
         default:
           return '';

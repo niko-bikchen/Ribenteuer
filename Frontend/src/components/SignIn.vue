@@ -1,11 +1,11 @@
 <template>
   <q-form class="q-gutter-sm" @submit="onSubmit">
     <q-input
-      v-model="userEmail"
+      v-model="userLogin"
       :readonly="ajaxActive"
       :rules="validation.email"
       type="text"
-      label="Email"
+      label="Login"
       color="white"
       square
       outlined
@@ -40,7 +40,7 @@ export default {
   mixins: [notifyUtils],
   data() {
     return {
-      userEmail: '',
+      userLogin: '',
       userPassword: '',
       rememberMe: false,
       validation: {},
@@ -51,7 +51,7 @@ export default {
   methods: {
     onSubmit() {
       const userData = {
-        email: this.userEmail,
+        login: this.userLogin,
         password: this.userPassword,
         activeRole: 'ROLE_USER'
       };

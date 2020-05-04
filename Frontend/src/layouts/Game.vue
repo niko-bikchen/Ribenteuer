@@ -7,26 +7,6 @@
             Ribenteuer
           </div>
         </q-toolbar-title>
-        <div class="absolute-center">
-          <div class="text-center">
-            <span class="text-subtitle1"> {{ characterData.name }}'s Health </span>
-          </div>
-          <q-linear-progress
-            size="25px"
-            :value="characterData.currentHealth / characterData.maxHealth"
-            color="red"
-            style="width: 300px; display: inline-block"
-            rounded
-          >
-            <div class="absolute-full flex flex-center">
-              <q-badge
-                color="black"
-                text-color="white"
-                :label="`${characterData.currentHealth} / ${characterData.maxHealth}`"
-              ></q-badge>
-            </div>
-          </q-linear-progress>
-        </div>
         <q-btn
           class="q-ml-md"
           label="Inventory"
