@@ -1,7 +1,7 @@
 package com.scriptizergs.ribenteuer.helpers;
 
 
-import com.scriptizergs.ribenteuer.model.User.User;
+import model.User.User;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;

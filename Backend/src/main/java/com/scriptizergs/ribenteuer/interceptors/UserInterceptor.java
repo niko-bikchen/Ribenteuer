@@ -1,6 +1,6 @@
 package com.scriptizergs.ribenteuer.interceptors;
 
-import com.scriptizergs.ribenteuer.model.User.UserService;
+import model.User.UserService;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;

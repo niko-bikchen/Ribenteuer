@@ -4,8 +4,8 @@ import com.scriptizergs.ribenteuer.exceptions.BadRequestException;
 import com.scriptizergs.ribenteuer.exceptions.NotFoundException;
 import com.scriptizergs.ribenteuer.helpers.RequestHelper;
 import lombok.RequiredArgsConstructor;
-import com.scriptizergs.ribenteuer.model.User.User;
-import com.scriptizergs.ribenteuer.model.User.UserService;
+import model.User.User;
+import model.User.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -48,9 +48,6 @@ public class AuthRestController {
 
     @PostMapping("/sign-in")
     public ResponseEntity<User> signUserIn(@Valid @RequestBody User userLoginData, HttpServletResponse response) throws NotFoundException {
-        System.out.println(userLoginData);
-        System.out.println(userLoginData.getPassword());
-
         User user = userService.findUserByLogin(userLoginData.getLogin())
                 .orElseThrow(() -> new NotFoundException("No user with login: " + userLoginData.getLogin()));
 
@@ -76,9 +73,6 @@ public class AuthRestController {
 
     @PostMapping("/sign-up")
     public ResponseEntity<User> signUserUp(@RequestBody User user) throws BadRequestException {
-        System.out.println(user);
-        System.out.println(user.getPassword());
-
         if (userService.findUserByLogin(user.getLogin()).isPresent()) {
             throw new BadRequestException("User with this login already exists");
         }

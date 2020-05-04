@@ -1,7 +1,7 @@
 package com.scriptizergs.ribenteuer.security;
 
-import com.scriptizergs.ribenteuer.model.User.User;
-import com.scriptizergs.ribenteuer.model.User.UserService;
+import model.User.User;
+import model.User.UserService;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

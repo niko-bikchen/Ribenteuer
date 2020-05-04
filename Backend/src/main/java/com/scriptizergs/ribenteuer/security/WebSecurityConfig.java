@@ -15,7 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- * Configure Spring Security using already created authentication helpers
+ * Configure Spring Security using already created authentication com.scriptizergs.ribenteuer.helpers
  * and create some useful beans to use with it
  */
 @Configuration
@@ -68,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        String[] patterns = new String[]{"/api/auth/**", "/"};
+        String[] patterns = new String[]{"/api/auth/**"};
 
         // disable authentication for cors
         http.cors()
@@ -80,7 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()
 
                 .authorizeRequests()
-                // exclude some routes from security
+                // exclude some routes from com.scriptizergs.ribenteuer.security
                 .antMatchers(patterns).permitAll()
                 // other have to be authenticated
                 .anyRequest().authenticated()

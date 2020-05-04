@@ -1,7 +1,7 @@
 package com.scriptizergs.ribenteuer.interceptors;
 
 import lombok.RequiredArgsConstructor;
-import com.scriptizergs.ribenteuer.model.User.UserService;
+import model.User.UserService;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
