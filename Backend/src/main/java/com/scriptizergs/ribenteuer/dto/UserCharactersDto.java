@@ -1,6 +1,6 @@
 package com.scriptizergs.ribenteuer.dto;
 
-import model.Character.GameCharacter;
+import com.scriptizergs.ribenteuer.model.Character.GameCharacter;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

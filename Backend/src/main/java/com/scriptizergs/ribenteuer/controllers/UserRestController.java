@@ -3,10 +3,10 @@ package com.scriptizergs.ribenteuer.controllers;
 import com.scriptizergs.ribenteuer.dto.NewCharacterDto;
 import com.scriptizergs.ribenteuer.dto.UserCharactersDto;
 import com.scriptizergs.ribenteuer.helpers.RequestHelper;
-import model.Character.CharacterService;
-import model.Character.ClassesCategories;
-import model.Character.GameCharacter;
-import model.User.User;
+import com.scriptizergs.ribenteuer.model.Character.CharacterService;
+import com.scriptizergs.ribenteuer.model.Character.ClassesCategories;
+import com.scriptizergs.ribenteuer.model.Character.GameCharacter;
+import com.scriptizergs.ribenteuer.model.User.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +40,11 @@ public class UserRestController {
     public ResponseEntity<UserCharactersDto> createNewCharacter(@RequestBody NewCharacterDto newCharacter, HttpServletRequest request) {
         User currentUser = requestHelper.getCurrentUser(request);
         ClassesCategories characterClass = ClassesCategories.valueOf(newCharacter.getCharacterClass().toUpperCase());
-        characterService.makeCharacter(characterClass, currentUser.getId(), newCharacter.getName());
+        GameCharacter character = characterService.makeCharacter(characterClass, currentUser.getId(), newCharacter.getName(), newCharacter.getPortraitId());
+        character.setAgility(newCharacter.getStats().getAgility());
+        character.setIntelligence(newCharacter.getStats().getIntelligence());
+        character.setStrength(newCharacter.getStats().getStrength());
+        characterService.updateChar(character);
 
         List<GameCharacter> characters = characterService.findAllUsersChars(currentUser.getId());
         return ResponseEntity.status(HttpStatus.OK).body(UserCharactersDto.of(characters));

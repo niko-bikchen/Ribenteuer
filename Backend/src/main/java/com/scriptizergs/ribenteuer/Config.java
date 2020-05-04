@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 //the class establishes connection to mongo db
 @Configuration
-@EnableMongoRepositories(basePackages = "model")
+@EnableMongoRepositories(basePackages = "com.scriptizergs.ribenteuer.model")
 public class Config {
 
 

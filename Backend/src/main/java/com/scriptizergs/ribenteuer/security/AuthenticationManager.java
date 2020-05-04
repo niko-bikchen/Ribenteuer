@@ -1,8 +1,8 @@
 package com.scriptizergs.ribenteuer.security;
 
 import com.scriptizergs.ribenteuer.exceptions.NotFoundException;
-import model.User.User;
-import model.User.UserService;
+import com.scriptizergs.ribenteuer.model.User.User;
+import com.scriptizergs.ribenteuer.model.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

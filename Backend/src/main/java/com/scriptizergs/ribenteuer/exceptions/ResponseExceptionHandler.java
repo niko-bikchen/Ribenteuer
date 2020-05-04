@@ -70,7 +70,7 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /*
-     * Handle errors when request has not passed through the model validation
+     * Handle errors when request has not passed through the com.scriptizergs.ribenteuer.model validation
      */
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
