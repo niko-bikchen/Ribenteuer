@@ -1,11 +1,7 @@
 package model.Trip;
 
-import model.Character.CharacterRepository;
 import model.Character.CharacterService;
 import model.Character.GameCharacter;
-import model.FhightChar.FightCharacter;
-import model.Location.LocationImpl.BaseLocationFactory;
-import model.Location.LocationImpl.LocationFactory;
 import model.Location.LocationImpl.LocationType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

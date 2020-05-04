@@ -66,7 +66,7 @@ public class FightCharacter {
 
 
     private void deactivateAllSkills(){
-        for(Ability ability: currentChar.getAbilities()){
+        for(Ability ability: currentChar.getSkills()){
            ability.setStartOptions();
         }
     }

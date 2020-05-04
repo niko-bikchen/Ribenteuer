@@ -1,10 +1,6 @@
 package model.Item;
 
-import model.Character.Classes.Mage;
-import model.Character.Classes.Rogue;
-import model.Character.Classes.Warrior;
 import model.Character.ClassesCategories;
-import model.Character.GameCharacter;
 import model.Item.Categories.Categories;
 import model.Item.Categories.LvlOfItem;
 import model.Item.Items.Armors.Mage.AdeptsMantle;

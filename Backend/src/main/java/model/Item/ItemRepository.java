@@ -1,7 +1,6 @@
 //developed by Vladyslav Haponenko
 package model.Item;
 
-import model.Item.Item;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

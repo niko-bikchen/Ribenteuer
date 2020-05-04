@@ -1,6 +1,5 @@
 package model.Location.InteractiveObjects.ForestObjects;
 
-import model.Location.InteractiveObjects.CastleDungeonObjects.*;
 import model.Location.InteractiveObjects.InteractiveObject;
 
 public class ForestObjFactory extends BaseForestObjFactory {

@@ -21,9 +21,9 @@ public abstract class GameCharacter {
 
     protected double currentExp;
 
-    protected double expNeeded;
+    protected double expToNextLevel;
 
-    protected int lvl;
+    protected int level;
 
     protected int agility;
 
@@ -35,105 +35,104 @@ public abstract class GameCharacter {
 
     protected int freeStatPoints;
 
-    protected int  freeSkillPoints;
+    protected int freeSkillPoints;
 
     protected int gold;
 
-    protected ClassesCategories classOfChar;
+    protected ClassesCategories characterClass;
 
-    protected List<Ability> abilities;
+    protected List<Ability> skills;
 
 
-    public int calculateExpNeeded(){
-        return lvl*100;
+    public int calculateExpNeeded() {
+        return level * 100;
     }
 
 
-    public GameCharacter(){
+    public GameCharacter() {
         freeSkillPoints = 0;
         freeStatPoints = 10;
         gold = 100;
     }
 
-    public void activateSkill(String name){
-        for(Ability ability : abilities){
-            if(ability.abilityName().equals(name) && ability.activatable()){
+    public void activateSkill(String name) {
+        for (Ability ability : skills) {
+            if (ability.abilityName().equals(name) && ability.activatable()) {
                 ability.activate();
                 break;
             }
         }
     }
 
-    public void deactivateSkill(String name){
-        for(Ability ability : abilities){
-            if(ability.abilityName().equals(name) && ability.isActive()){
+    public void deactivateSkill(String name) {
+        for (Ability ability : skills) {
+            if (ability.abilityName().equals(name) && ability.isActive()) {
                 ability.deactivate();
                 break;
             }
         }
     }
 
-    public void turnPassed(){
-        for(Ability ability : abilities){
+    public void turnPassed() {
+        for (Ability ability : skills) {
             ability.turnPassed();
         }
     }
 
-    public void addSkillPoitns(int skillPoints){
-        this.freeStatPoints +=skillPoints;
+    public void addSkillPoitns(int skillPoints) {
+        this.freeStatPoints += skillPoints;
     }
 
-    public void addStatPoints(int statPoints){
+    public void addStatPoints(int statPoints) {
         this.freeStatPoints += statPoints;
     }
 
-    public void addAgility(int points){
-        if(points <= this.freeStatPoints){
+    public void addAgility(int points) {
+        if (points <= this.freeStatPoints) {
             this.agility += points;
         }
     }
 
-    public void addStrength(int points){
-        if(points <= this.freeStatPoints){
+    public void addStrength(int points) {
+        if (points <= this.freeStatPoints) {
             this.strength += points;
         }
     }
 
-    public void addIntelligence(int points){
-        if(points <= this.freeStatPoints){
+    public void addIntelligence(int points) {
+        if (points <= this.freeStatPoints) {
             this.intelligence += points;
         }
     }
 
-    public void lvlUp(){
-        lvl += 1;
+    public void lvlUp() {
+        level += 1;
         freeStatPoints += 5;
         freeSkillPoints += 1;
     }
 
-    public void addExp(int exp){
-        if(currentExp + exp >= this.expNeeded){
-            currentExp = currentExp + exp - expNeeded;
+    public void addExp(int exp) {
+        if (currentExp + exp >= this.expToNextLevel) {
+            currentExp = currentExp + exp - expToNextLevel;
             lvlUp();
-        }else{
+        } else {
             currentExp += exp;
         }
     }
 
-    public void addGold(int gold){
+    public void addGold(int gold) {
         this.gold += Math.abs(gold);
     }
 
-    public boolean isEnoughGold(int cost){
+    public boolean isEnoughGold(int cost) {
         return gold >= cost;
     }
 
-    public void spendGold(int gold){
-        if(isEnoughGold(gold)){
+    public void spendGold(int gold) {
+        if (isEnoughGold(gold)) {
             this.gold -= gold;
         }
     }
-
 
 
 }

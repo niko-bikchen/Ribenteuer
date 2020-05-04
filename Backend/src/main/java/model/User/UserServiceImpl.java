@@ -3,6 +3,7 @@ package model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.scriptizergs.ribenteuer.security.models.Role;
 
 import java.util.Optional;
 
@@ -13,8 +14,8 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public void createUser(String mail,String pass) {
-        userRepository.save(new User(mail,pass));
+    public void createUser(String mail, String pass, String login, Role activeRole) {
+        userRepository.save(new User(mail, pass, login, activeRole));
     }
 
     //the method deletes a User
@@ -32,6 +33,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByEmail(String email) {
-        return  userRepository.findByMail(email);
+        return userRepository.findByMail(email);
+    }
+
+    @Override
+    public Optional<User> findUserByLogin(String login) {
+        return userRepository.findByLogin(login);
     }
 }

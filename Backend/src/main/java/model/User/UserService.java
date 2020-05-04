@@ -2,6 +2,8 @@
 package model.User;
 
 
+import com.scriptizergs.ribenteuer.security.models.Role;
+
 import java.util.Optional;
 
 //all classes which will implement the interface will be responsible for
@@ -9,7 +11,7 @@ import java.util.Optional;
 public interface UserService {
 
     //TODO
-    void createUser(String mail,String pass);
+    void createUser(String mail, String pass, String login, Role activeRole);
 
     void deleteUser(String id);
 
@@ -17,4 +19,5 @@ public interface UserService {
 
     User findUserByEmail(String email);
 
+    Optional<User> findUserByLogin(String email);
 }

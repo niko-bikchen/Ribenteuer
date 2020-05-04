@@ -1,8 +1,6 @@
 package model.Location.LocationImpl;
 
 import model.Character.GameCharacter;
-import model.Location.LocationImpl.BaseLocationFactory;
-import model.Location.LocationImpl.Location;
 import model.Location.LocationImpl.Room.BaseRoomFactrory;
 import model.Location.LocationImpl.Room.Room;
 import model.Location.LocationImpl.Room.RoomFactory;
@@ -16,7 +14,7 @@ public class LocationFactory extends BaseLocationFactory {
 
     @Override
     public Location generateLocation(GameCharacter gameCharacter, LocationType locType) {
-        return new Location(locType, generateRooms(locType, gameCharacter.getLvl()));
+        return new Location(locType, generateRooms(locType, gameCharacter.getLevel()));
     }
 
 

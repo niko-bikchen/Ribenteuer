@@ -13,24 +13,24 @@ public class Mage extends GameCharacter {
     public Mage(String ownerId,String name){
         super();
         this.currentExp=0;
-        this.lvl=1;
+        this.level =1;
         this.name=name;
         this.ownerId=ownerId;
         this.strength=14;
         this.intelligence=28;
         this.agility=18;
-        this.expNeeded=calculateExpNeeded();
+        this.expToNextLevel =calculateExpNeeded();
 
-        this.classOfChar = ClassesCategories.MAGE;
+        this.characterClass = ClassesCategories.MAGE;
 
         this.portraitId = 3;
 
-        abilities=new ArrayList<Ability>();
-        abilities.add(new FieryBlizzard());
-        abilities.add(new MagicalVampirism());
-        abilities.add(new RunicExplosion());
-        abilities.add(new StoneArmor());
-        abilities.add(new ArcaneBlur());
+        skills =new ArrayList<Ability>();
+        skills.add(new FieryBlizzard());
+        skills.add(new MagicalVampirism());
+        skills.add(new RunicExplosion());
+        skills.add(new StoneArmor());
+        skills.add(new ArcaneBlur());
 
     }
 }

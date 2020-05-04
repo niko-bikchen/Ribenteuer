@@ -5,7 +5,6 @@ package model.Location.LocationImpl;
 import lombok.Getter;
 import lombok.Setter;
 import model.Location.LocationImpl.Room.Room;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 

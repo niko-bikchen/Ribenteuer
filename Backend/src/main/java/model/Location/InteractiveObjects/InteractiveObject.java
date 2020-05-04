@@ -1,6 +1,5 @@
 package model.Location.InteractiveObjects;
 
-import model.Character.GameCharacter;
 import model.FhightChar.FightCharacter;
 import model.Location.LocationImpl.LocationType;
 

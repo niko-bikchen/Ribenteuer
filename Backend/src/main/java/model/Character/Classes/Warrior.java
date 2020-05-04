@@ -14,24 +14,24 @@ public class Warrior extends GameCharacter {
     public Warrior(String ownerId,String name){
         super();
         this.currentExp=0;
-        this.lvl=1;
+        this.level =1;
         this.name=name;
         this.ownerId=ownerId;
         this.strength=26;
         this.intelligence=14;
         this.agility=20;
-        this.expNeeded=calculateExpNeeded();
+        this.expToNextLevel =calculateExpNeeded();
 
-        this.classOfChar = ClassesCategories.WARRIOR;
+        this.characterClass = ClassesCategories.WARRIOR;
 
         this.portraitId = 1;
 
-        abilities=new ArrayList<Ability>();
-        abilities.add(new Anger());
-        abilities.add(new BroadStroke());
-        abilities.add(new Courage());
-        abilities.add(new DefensiveStand());
-        abilities.add(new DestructiveStrike());
+        skills =new ArrayList<Ability>();
+        skills.add(new Anger());
+        skills.add(new BroadStroke());
+        skills.add(new Courage());
+        skills.add(new DefensiveStand());
+        skills.add(new DestructiveStrike());
     }
 
 }

@@ -1,7 +1,6 @@
 package model.Trip;
 
 import model.Character.GameCharacter;
-import model.FhightChar.FightCharacter;
 import model.Location.LocationImpl.LocationType;
 
 public interface TripService {
