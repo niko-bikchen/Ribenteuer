@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Warrior extends GameCharacter {
 
-    public Warrior(String ownerId,String name){
+    public Warrior(String ownerId,String name, int portraitId){
         super();
         this.currentExp=0;
         this.level =1;
@@ -24,7 +24,7 @@ public class Warrior extends GameCharacter {
 
         this.characterClass = ClassesCategories.WARRIOR;
 
-        this.portraitId = 1;
+        this.portraitId = portraitId;
 
         skills =new ArrayList<Ability>();
         skills.add(new Anger());

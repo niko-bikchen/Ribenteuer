@@ -42,6 +42,8 @@ public abstract class Ability implements AbilityDamageBuff, AvoidBuff, Vampirism
 
     protected double damageTaken = 1;
 
+    protected String description;
+
 
 
 
@@ -78,6 +80,14 @@ public abstract class Ability implements AbilityDamageBuff, AvoidBuff, Vampirism
     }
 
 
+    /**
+     * This method is responsible for
+     * deactivating an ability
+     *
+     * It sets an activity turns that left to 0
+     * and cd turns to particular number specified
+     * by ability creators
+     */
     public void deactivate() {
         active=false;
         acTurnsLeft=0;
@@ -100,8 +110,12 @@ public abstract class Ability implements AbilityDamageBuff, AvoidBuff, Vampirism
     }
 
 
-    // should be called at the start of each fight in order
-    // to drop cd
+    /**
+     * This method is responsible for preparing
+     * an ability for fight
+     *
+     * Deactivates an ability and sets cd turns to 0
+     */
     public void setStartOptions(){
         deactivate();
         cdDeTurnsLef = 0;
@@ -113,12 +127,16 @@ public abstract class Ability implements AbilityDamageBuff, AvoidBuff, Vampirism
     }
 
 
-    public abstract String description();
-
-
-
-    // at the end of every turn this method should be called
-    // to change a skill cd
+    /** This method is responsible for controlling
+     * abilities private fields like cd, whether a skill
+     * should be deactivated...
+    *
+     * Changes the number of activity turns that left if
+     * an ability is activated
+     * Changes the number of cd turns that left is
+     * an ability is deactivated
+     * deactivates ability if activity turns reaches 0
+     */
     public void turnPassed() {
         if(isActive()){
             if (acTurnsLeft-1 == 0){

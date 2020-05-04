@@ -27,6 +27,11 @@ public class FieryBlizzard extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(ABILITY_DAMAGE);
+
+        description = "The player deals 2 hits with" +
+                " a power of 60\\75\\90% from his" +
+                " ability damage with a probability" +
+                " of getting 70 \\ 80 \\ 90% each. Cooldown — 5 rounds";
     }
 
     @Override
@@ -51,8 +56,4 @@ public class FieryBlizzard extends Ability {
                 (h_second <=chanceToHit ? abilityDamage : 0);
     }
 
-    @Override
-    public String description() {
-        return null;
-    }
 }

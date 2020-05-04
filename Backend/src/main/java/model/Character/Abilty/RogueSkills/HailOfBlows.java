@@ -27,6 +27,11 @@ public class HailOfBlows extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(ABILITY_DAMAGE);
+
+        description = "The player deals 3 hits with a power of 70" +
+                " \\ 80 \\ 90% from his ability damage" +
+                " with a probability of getting 80" +
+                " \\ 85 \\ 90% each. Cooldown — 8 rounds";
     }
 
     @Override
@@ -52,8 +57,4 @@ public class HailOfBlows extends Ability {
     }
 
 
-    @Override
-    public String description() {
-        return null;
-    }
 }

@@ -23,6 +23,10 @@ public class IntombmentTrick extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(FINISHING_OFF);
+
+        description = "The player deals 30 \\ 45 \\ 60%" +
+                " of the damage already done to the enemy." +
+                " Cooldown — 8 rounds";
     }
 
     @Override
@@ -37,9 +41,4 @@ public class IntombmentTrick extends Ability {
     }
 
 
-
-    @Override
-    public String description() {
-        return null;
-    }
 }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Mage extends GameCharacter {
 
-    public Mage(String ownerId,String name){
+    public Mage(String ownerId,String name, int portraitId){
         super();
         this.currentExp=0;
         this.level =1;
@@ -23,7 +23,7 @@ public class Mage extends GameCharacter {
 
         this.characterClass = ClassesCategories.MAGE;
 
-        this.portraitId = 3;
+        this.portraitId = portraitId;
 
         skills =new ArrayList<Ability>();
         skills.add(new FieryBlizzard());

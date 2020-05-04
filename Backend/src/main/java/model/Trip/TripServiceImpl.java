@@ -17,7 +17,9 @@ public class TripServiceImpl implements TripService {
 
     @Override
     public Trip makeTrip(GameCharacter character, LocationType locType) {
-        return new Trip(character,locType);
+        Trip trip = new Trip(character,locType);
+        tripRepository.save(trip);
+        return trip;
     }
 
     @Override

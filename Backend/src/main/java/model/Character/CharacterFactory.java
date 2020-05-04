@@ -7,20 +7,26 @@ import model.Character.Classes.Warrior;
 
 public class CharacterFactory extends BaseCharacterFactory {
 
-    //returns a character relatively chosen type
+    /**
+     *
+     * @param type a type of character chosen by a user
+     * @param ownerId an id of a user
+     * @param name name of a character specified by a user
+     * @return a character object that should be added into repository
+     */
     @Override
-    public GameCharacter createCharacter(ClassesCategories type, String ownerId, String name) {
+    public GameCharacter createCharacter(ClassesCategories type, String ownerId, String name, int portraitId) {
         GameCharacter character;
         switch (type)
         {
             case ROGUE:
-                character=new Rogue(ownerId,name);
+                character=new Rogue(ownerId,name,portraitId);
                 break;
             case MAGE:
-                character=new Mage(ownerId,name);
+                character=new Mage(ownerId,name, portraitId);
                 break;
             case WARRIOR:
-                character=new Warrior(ownerId,name);
+                character=new Warrior(ownerId,name, portraitId);
                 break;
             default: throw new IllegalArgumentException("No such character.");
         }

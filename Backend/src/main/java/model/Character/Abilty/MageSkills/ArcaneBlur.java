@@ -22,6 +22,10 @@ public class ArcaneBlur extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(AVOID);
+
+        description = "Over 3 rounds, the player increases" +
+                " the probability of an enemy miss by 30 \\ 40" +
+                " \\ 50%. Cooldown — 7 rounds";
     }
 
     @Override
@@ -37,8 +41,4 @@ public class ArcaneBlur extends Ability {
     }
 
 
-    @Override
-    public String description() {
-        return null;
-    }
 }

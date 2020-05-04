@@ -23,6 +23,10 @@ public class Concentration extends Ability {
 
         this.types = new LinkedList<MechanicsCategory>();
         types.add(AVOID);
+
+        description = "Over 3 rounds, " +
+                "the player increases the probability of" +
+                " an enemy miss by 10 \\ 30 \\ 45%. Cooldown — 7 rounds";
     }
 
     @Override
@@ -36,9 +40,4 @@ public class Concentration extends Ability {
         lvlOfAbil+=1;
     }
 
-
-    @Override
-    public String description() {
-        return null;
-    }
 }
